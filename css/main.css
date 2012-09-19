@@ -115,6 +115,7 @@ body {
 p,
 a {
 	color: white;
+	font-family: Arial;
 }
 
 a {
@@ -162,6 +163,7 @@ footer {
 footer a {
 	display: block;
 	margin-top: 5px;
+	text-transform: uppercase;
 }
 
 /* ==========================================================================
