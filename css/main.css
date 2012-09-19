@@ -130,8 +130,13 @@ a:hover {
 	color: darkorange;
 }
 
-h1 {
+h1,
+h2,
+h3 {
 	color: white;
+}
+
+h1 {
 	font-size: 70px;
 	display: block;
 	width: 800px;
@@ -146,6 +151,12 @@ h1 {
   -webkit-border-radius: 3px;
   border-radius: 3px;
   -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+}
+
+.push-a-bit {
+	display: block;
+	height: 40px;
+	width: 100%;
 }
 
 footer {
