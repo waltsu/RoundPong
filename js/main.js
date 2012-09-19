@@ -1,9 +1,18 @@
 $(function () {
-    var canvas = $('#main-canvas')[0].getContext("2d");
+    var ctx = $('#main-canvas')[0].getContext("2d");
     
 
-    canvas.beginPath();
-    canvas.arc(400, 300, 200, 0, Math.PI*2, true); 
-    canvas.stroke();
-    canvas.closePath();
+    ctx.beginPath();
+    ctx.arc(400, 300, 200, 0, Math.PI*2, true);
+    ctx.stroke();
+    ctx.closePath();
+
+    ctx.beginPath();
+    ctx.arc(250, 300, 15, 0, Math.PI*2, true);
+    ctx.stroke();
+    ctx.fill();
+    ctx.closePath();
+
+    ctx.fillRect(195, 270, 10, 70)
+
 });
