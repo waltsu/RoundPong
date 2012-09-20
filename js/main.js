@@ -1,18 +1,31 @@
 $(function () {
-    var ctx = $('#main-canvas')[0].getContext("2d");
-    
+    engine = new pongEngine();
+    engine.startEngine();
 
-    ctx.beginPath();
-    ctx.arc(400, 300, 200, 0, Math.PI*2, true);
-    ctx.stroke();
-    ctx.closePath();
+    var upPressed = function() {
+    },
+        downPressed = function() {
+        },
+        rightPressed = function() {
+        },
+        leftPressed = function() {
+        };
 
-    ctx.beginPath();
-    ctx.arc(250, 300, 15, 0, Math.PI*2, true);
-    ctx.stroke();
-    ctx.fill();
-    ctx.closePath();
-
-    ctx.fillRect(195, 270, 10, 70)
+    $('body').keydown(function(e, v) {
+        switch(e.keyCode) {
+            case 39:
+                rightPressed();
+                break;
+            case 38:
+                upPressed();
+                break;
+            case 37:
+                leftPressed();
+                break;
+            case 40:
+                downPressed();
+                break;
+        }
+    });
 
 });
