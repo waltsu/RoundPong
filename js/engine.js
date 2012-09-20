@@ -14,7 +14,6 @@ function pongEngine() {
     this.ball = null;
     this.ballMovingVector = new THREE.Vector3(0,0,0);
 
-
     this.initializeEngine = function () {
         console.log("Running the thing");
             
@@ -42,9 +41,6 @@ function pongEngine() {
 
         this.scene.add(this.ball);
 
-        this.light.position.x = 10;
-        this.light.position.y = 50;
-        this.light.position.z = 130;
         this.scene.add(this.light);
 
         this.renderScene();
