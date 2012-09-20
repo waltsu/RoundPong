@@ -112,6 +112,10 @@ body {
 	margin: 0 auto;
 }
 
+.push-a-bit {
+	padding-bottom: 50px;
+}
+
 p,
 a {
 	color: white;
@@ -143,20 +147,22 @@ h1 {
 	margin: 0 auto;
 	text-align: center;
 	font-family: 'Monoton', cursive;
+	font-weight: 200;
 }
 
 #main-canvas {
 	background-color: white;
 	border: 5px solid gray;
+	outline: 1px solid black;
   -webkit-border-radius: 3px;
   border-radius: 3px;
   -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
 }
 
-.push-a-bit {
-	display: block;
-	height: 40px;
-	width: 100%;
+.how-to-play p {
+	display: inline-block;
+	width: 609px;
+	margin: 0 0 10px 10px;
 }
 
 footer {

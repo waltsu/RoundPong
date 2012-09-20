@@ -12,7 +12,7 @@ function pongEngine() {
       new THREE.AmbientLight(0xFFFFFF);
 
     this.ball = null;
-    this.ballMovingVector = new THREE.Vector3(0,0,0);
+    this.ballMovingVector = new THREE.Vector3(1,0,0);
 
 
     this.initializeEngine = function () {
