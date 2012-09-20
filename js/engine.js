@@ -12,7 +12,7 @@ function pongEngine() {
       new THREE.AmbientLight(0xFFFFFF);
 
     this.ball = null;
-    this.ballMovingVector = new THREE.Vector3(1,0,0);
+    this.ballMovingVector = new THREE.Vector3(0,0,0);
 
 
     this.initializeEngine = function () {
@@ -28,7 +28,7 @@ function pongEngine() {
             rings = 16;
 
         var sphereMaterial =
-            new THREE.MeshLambertMaterial(
+            new THREE.MeshBasicMaterial(
                 {
                     color: 0xCC0000
                 });
@@ -38,17 +38,13 @@ function pongEngine() {
             radius,
             segments,
             rings),
-
           sphereMaterial);
 
-        // add the sphere to the scene
         this.scene.add(this.ball);
 
         this.light.position.x = 10;
         this.light.position.y = 50;
         this.light.position.z = 130;
-
-        // add to the scene
         this.scene.add(this.light);
 
         this.renderScene();
@@ -60,8 +56,8 @@ function pongEngine() {
 
     this.startEngine = function() {
         this.initializeEngine();
-        setInterval((function(self) {
-            return function() { self.runLoop(); } })(this), 33);
+        var runLoop = _.bind(this.runLoop, this);
+        setInterval(runLoop, 33);
         
     }
 
