@@ -151,12 +151,14 @@ h1 {
 }
 
 #main-canvas {
+    width: 810px;
+    height: 610px;
 	background-color: white;
 	border: 5px solid gray;
 	outline: 1px solid black;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
 }
 
 .how-to-play p {
