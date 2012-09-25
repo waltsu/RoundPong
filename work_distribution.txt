@@ -1,0 +1,17 @@
+Work & task distribution
+
+Valtteri
+- Game logic
+
+Joonas
+- Visual look
+- JavaScript logic for playing soundeffects
+
+Roope
+- Preloader & local storage
+
+Matti
+- Sound effect recording and producing
+
+Niko
+- Concept development (theme etc.)
