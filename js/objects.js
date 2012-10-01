@@ -1,3 +1,15 @@
+var rotateVector = function(angle, vector) {
+    x = vector.elements[0];
+    y = vector.elements[1];
+    cos = Math.cos
+    sin = Math.sin
+
+    newX = x*cos(angle) - y*sin(angle);
+    newY = x*sin(angle) + y*cos(angle);
+
+    return $V([newX, newY]);
+}
+
 function Ball(ctx, x, y) {
     this.ctx = ctx;
     this.x = x; 
@@ -23,8 +35,38 @@ function Paddle(ctx, x, y) {
     this.x = x;
     this.y = y;
 
+    this.length = 70;
+    this.width = 10; 
+    this.rotation = 0;
+
     this.render = function() {
-        this.ctx.fillRect(this.x, this.y, 10, 70)
+        drawVector = $V([0, 1]);
+
+        this.ctx.beginPath();
+        this.ctx.moveTo(this.x, this.y);
+        
+        firstSide = rotateVector(this.rotation, drawVector);
+        firstSide = firstSide.multiply(this.length); 
+        this.ctx.lineTo(this.x + firstSide.elements[0], this.y + firstSide.elements[1]);
+        
+
+        secondSide = rotateVector(Math.PI / 2, firstSide);
+        secondSide = secondSide.toUnitVector().multiply(this.width);
+        this.ctx.lineTo(this.x + firstSide.elements[0] + secondSide.elements[0], this.y + firstSide.elements[1] + secondSide.elements[1]);
+
+        thirdSide = rotateVector(Math.PI / 2, secondSide);
+        thirdSide = thirdSide.toUnitVector();
+        this.ctx.lineTo(this.x + secondSide.elements[0] + thirdSide.elements[0], this.y + secondSide.elements[1] + thirdSide.elements[1]);
+
+        // Back to start
+        this.ctx.lineTo(this.x, this.y);
+        
+        this.ctx.stroke();
+        this.ctx.fill();
+
+        this.ctx.closePath();
+        
+
     }
 }
 

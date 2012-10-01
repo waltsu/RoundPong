@@ -3,7 +3,8 @@ var PI = 3.14159265359
 function pongEngine() {
     this.ctx = $('#main-canvas')[0].getContext("2d");
     this.ball = new Ball(this.ctx, 50,50);
-    this.paddle = new Paddle(this.ctx, 195, 200)
+    //this.paddle = new Paddle(this.ctx, 195, 260)
+    this.paddle = new Paddle(this.ctx, 150, 260)
     this.area = new Area(this.ctx);
 
     this.init = function() {
