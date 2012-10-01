@@ -13,8 +13,8 @@
 // sound.loadFile('sounds/huge-bark.wav') --> pauses playback & loads a new audio file to the same instance
 // sound.isSupported() --> checks if the browser supports HTML5 audio at all, returns true / false
 // sound.supportedFormats() --> returns a two dimensional array of format support for example [MP3][true], [ACC][false] etc.
-// sound.fadeIn(75) --> fades the volume from its current level to 100%. Takes the speed as an argument. Less is faster.
-// sound.fadeOut(75) --> fades the volume from its current level to 0%. Takes the speed as an argument. Less is faster.
+// sound.fadeIn(70) --> fades the volume from its current level to 100%. Takes the speed as an argument. Less is faster. If no speed id defined will use 70 as a default.
+// sound.fadeOut(70) --> fades the volume from its current level to 0%. Takes the speed as an argument. Less is faster. If no speed id defined will use 70 as a default.
 // sound.setVolume(0.5) --> sets the volume level of the sound
 // sound.getVolume() --> returns the current volume level of the sound
 
