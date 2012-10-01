@@ -4,15 +4,19 @@
 // Website: http://jsalovaara.com
 
 // Usage examples:
-// var dog = new Soundgun('sounds/small-bark.wav'); --> init the obj & load the audio file
-// dog.play() --> play the sound once from start
-// dog.loop() --> sets the loop mode on
-// dog.unLoop() --> sets the loop mode off
-// dog.pause() --> pauses the playback
-// dog.resume() --> resumes the playback from where it was paused
-// dog.loadFile('sounds/huge-bark.wav') --> pauses playback & loads a new audio file to the same instance
-// dog.isSupported() --> checks if the browser supports HTML5 audio at all, returns true / false
-// dog.supportedFormats() --> returns a two dimensional array of format support for example [MP3][true], [ACC][false]
+// var sound = new Soundgun('sounds/small-bark.wav'); --> init the obj & load the audio file
+// sound.play() --> play the sound once from start
+// sound.loop() --> sets the loop mode on
+// sound.unLoop() --> sets the loop mode off
+// sound.pause() --> pauses the playback
+// sound.resume() --> resumes the playback from where it was paused
+// sound.loadFile('sounds/huge-bark.wav') --> pauses playback & loads a new audio file to the same instance
+// sound.isSupported() --> checks if the browser supports HTML5 audio at all, returns true / false
+// sound.supportedFormats() --> returns a two dimensional array of format support for example [MP3][true], [ACC][false] etc.
+// sound.fadeIn(75) --> fades the volume from its current level to 100%. Takes the speed as an argument. Less is faster.
+// sound.fadeOut(75) --> fades the volume from its current level to 0%. Takes the speed as an argument. Less is faster.
+// sound.setVolume(0.5) --> sets the volume level of the sound
+// sound.getVolume() --> returns the current volume level of the sound
 
 ;function Soundgun (url) {
 
@@ -22,11 +26,11 @@
     this.hasLoaded = false;
     this.sound = null;
     this.support_list = null;
+    this.interval = null;
 
     if (this.url != null) {
         this.loadFile(this.url);
     };
-
 }
 
 // Load the soundfile
@@ -96,12 +100,50 @@ Soundgun.prototype.supportedFormats = function () {
     }
 };
 
-// Start playing & fades in
-Soundgun.prototype.fadeIn = function () {
-    // TODO
+// Fades sound in. If no speed is defined it uses 70 as a default.
+Soundgun.prototype.fadeIn = function (speed) {
+    if (speed == null) {speed = 70};
+    if (this.interval != null) {
+        clearInterval(this.interval);
+        this.interval = null;    
+    };
+    var selfObj = this;
+    this.interval = window.setInterval(function(){
+        if (selfObj.sound.volume <= 0.9) {
+            selfObj.sound.volume += 0.01;
+        } else {
+            selfObj.sound.volume = 1;
+            clearInterval(selfObj.interval);
+            selfObj.interval = null;
+        }
+    }, speed);
 };
 
-// Fades out & pauses the playback
-Soundgun.prototype.fadeOut = function () {
-    // TODO
+// Fades sound out. If no speed is defined it uses 70 as a default.
+Soundgun.prototype.fadeOut = function (speed) {
+    if (speed == null) {speed = 70};
+    if (this.interval != null) {
+        clearInterval(this.interval);
+        this.interval = null;
+    };
+    var selfObj = this;
+    this.interval = window.setInterval(function(){
+        if (selfObj.sound.volume >= 0.1) {
+            selfObj.sound.volume -= 0.01;
+        } else {
+            selfObj.sound.volume = 0;
+            clearInterval(selfObj.interval);
+            selfObj.interval = null;
+        }
+    }, speed);
+};
+
+// Sets the volume level of the sound. Condition: 0 >= value <= 1.
+Soundgun.prototype.setVolume = function (level) {
+    this.sound.volume = level;
+};
+
+// Returns the volume level of the sound
+Soundgun.prototype.getVolume = function () {
+    return this.volume.sound;
 };
