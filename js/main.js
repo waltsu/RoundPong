@@ -1,5 +1,5 @@
 $(function () {
-    engine = new pongEngine();
+    engine = new PongEngine();
     engine.startEngine();
 
     var upPressed = function() {

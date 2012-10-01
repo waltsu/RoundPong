@@ -16,7 +16,7 @@ function Ball(ctx, x, y) {
     this.y = y;
     this.movingVector = $V([0,0]);
 
-    this.render = function() {
+    Ball.prototype.render = function() {
         this.ctx.beginPath();
         this.ctx.arc(this.x, this.y, 15, 0, Math.PI*2, true);
         this.ctx.stroke();
@@ -24,7 +24,7 @@ function Ball(ctx, x, y) {
         this.ctx.closePath();
     }
 
-    this.applyMovingVector = function() {
+    Ball.prototype.applyMovingVector = function() {
         this.x += this.movingVector.elements[0];
         this.y += this.movingVector.elements[1];
     }
@@ -39,7 +39,7 @@ function Paddle(ctx, x, y) {
     this.width = 10; 
     this.rotation = 0;
 
-    this.render = function() {
+    Paddle.prototype.render = function() {
         // TODO: debug
         // Draw debug-line for paddle rotation
         this.ctx.beginPath();
@@ -82,7 +82,7 @@ function Paddle(ctx, x, y) {
 function Area(ctx) {
     this.ctx = ctx;
 
-    this.render = function() {
+    Area.prototype.render = function() {
         this.ctx.beginPath();
         this.ctx.arc(400, 300, 200, 0, Math.PI*2, true);
         this.ctx.stroke();
