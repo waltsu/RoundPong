@@ -17,6 +17,16 @@ function Ball(ctx, x, y) {
     this.movingVector = $V([0,0]);
 
     Ball.prototype.render = function() {
+        // TODO: DEBUG MOVING VECTOR
+        this.ctx.strokeStyle='#cc0000';
+        this.ctx.beginPath();
+        this.ctx.moveTo(this.x, this.y);
+        var dMovingVector = this.movingVector.x(10);
+        this.ctx.lineTo(this.x + dMovingVector.elements[0], this.y + dMovingVector.elements[1]);
+        this.ctx.stroke();
+        this.ctx.closePath();
+        this.ctx.strokeStyle='#000000';
+
         this.ctx.beginPath();
         this.ctx.arc(this.x, this.y, 15, 0, Math.PI*2, true);
         this.ctx.stroke();
