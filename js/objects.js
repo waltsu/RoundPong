@@ -1,3 +1,5 @@
+var centerX = 400;
+var centerY = 300;
 var rotateVector = function(angle, vector) {
     x = vector.elements[0];
     y = vector.elements[1];
@@ -25,6 +27,7 @@ function Ball(ctx, x, y) {
         this.ctx.lineTo(this.x + dMovingVector.elements[0], this.y + dMovingVector.elements[1]);
         this.ctx.stroke();
         this.ctx.closePath();
+
         this.ctx.strokeStyle='#000000';
 
         this.ctx.beginPath();
@@ -38,6 +41,10 @@ function Ball(ctx, x, y) {
         this.x += this.movingVector.elements[0];
         this.y += this.movingVector.elements[1];
     }
+
+    Ball.prototype.getNextPosition = function() {
+        return [this.x + this.movingVector.elements[0], this.y + this.movingVector.elements[1]];
+    }
 }
 
 function Paddle(ctx, x, y) {
@@ -49,15 +56,27 @@ function Paddle(ctx, x, y) {
     this.width = 10; 
     this.rotation = 0;
 
+    Paddle.prototype.getOuterVector = function() {
+        rotationVector = rotateVector(this.rotation, $V([0,1]));
+        ret = rotateVector(Math.PI / 2, rotationVector);
+        return ret;
+    }
+
+    Paddle.prototype.getDirectionVector = function() {
+        return rotateVector(this.rotation, $V([0,1]));
+    }
+
     Paddle.prototype.render = function() {
         // TODO: debug
         // Draw debug-line for paddle rotation
         this.ctx.beginPath();
         this.ctx.moveTo(this.x, this.y);
-        rotationVector = rotateVector(this.rotation, $V([0,1])).multiply(200);
+        rotationVector = this.getDirectionVector().multiply(200);
         this.ctx.lineTo(this.x + rotationVector.elements[0], this.y + rotationVector.elements[1]);
         this.ctx.stroke();
         this.ctx.closePath();
+
+
         // TODO: End of debug
         drawVector = $V([0, 1]);
 
@@ -84,9 +103,8 @@ function Paddle(ctx, x, y) {
         this.ctx.fill();
 
         this.ctx.closePath();
-        
-
     }
+
 }
 
 function Area(ctx) {
@@ -94,7 +112,7 @@ function Area(ctx) {
 
     Area.prototype.render = function() {
         this.ctx.beginPath();
-        this.ctx.arc(400, 300, 200, 0, Math.PI*2, true);
+        this.ctx.arc(centerX, centerY, 200, 0, Math.PI*2, true);
         this.ctx.stroke();
         this.ctx.closePath();
     }
