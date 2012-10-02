@@ -6,7 +6,10 @@ function preloadImage(arrayOfImages) {
 
 function preloadAudio(arrayOfAudio) {
 	$(arrayOfAudio).each(function() {
-		var audio = document.createElement("audio");
+		var audio = new Audio();
+		audio.addEventListener('canplaythrough', function() {
+
+		}, false);
 		audio.src = this;
 	});
 }
