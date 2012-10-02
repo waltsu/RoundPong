@@ -1,4 +1,5 @@
 function PongEngine() {
+    this.canvas = $('#main-canvas');
     this.ctx = $('#main-canvas')[0].getContext("2d");
     this.ball = new Ball(this.ctx, 350, 300);
     //this.paddle = new Paddle(this.ctx, 200, 260)
@@ -28,10 +29,9 @@ function PongEngine() {
 
     PongEngine.prototype.calculateGame = function() {
         if(this.willCollide()) {
-            console.log("collided!");
             newMovVect = this.getMovingVectorAfterCollide();
-            console.log("new vector: " + newMovVect.elements);
             this.ball.movingVector = newMovVect;
+            this.canvas.trigger('collision');
         }
         this.ball.applyMovingVector();
     }

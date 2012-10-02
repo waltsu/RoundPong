@@ -34,4 +34,8 @@ $(function () {
         keyHandlers[e.keyCode]();
     });
 
+    $('#main-canvas').bind('collision', function() {
+        console.log("there was a collision!");
+    });
+
 });
