@@ -36,7 +36,7 @@ function PongEngine() {
 
     PongEngine.prototype.calculateGame = function() {
         if(this.willCollide()) {
-            this.ball.movingVector.elements = [0, 0];
+            console.log("collided!");
         }
         this.ball.applyMovingVector();
     }
@@ -45,12 +45,13 @@ function PongEngine() {
         paddleOuterVector = this.paddle.getOuterVector();
         paddleDirectionVecor = this.paddle.getDirectionVector();
         ballToPaddleVector = $V([this.ball.x - this.paddle.x, this.ball.y - this.paddle.y]);
+        // If ballToPaddleVector magnitude is smaller than paddle length, we might have hit
         if (getMagnitude(ballToPaddleVector) < this.paddle.length) {
             // If outer angle is smaller than PI/2, we are in the same line (or over) that paddle
             outerAngle = paddleOuterVector.angleFrom(ballToPaddleVector);
+            // If directionAngle is smaller than PI/2, then ball is in the right side of paddle, so it might hit it
             directionAngle = paddleDirectionVecor.angleFrom(ballToPaddleVector);
             if (outerAngle < Math.PI / 2 && directionAngle < Math.PI / 2) {
-                console.log("collission");
                 return true;
             }
         }
