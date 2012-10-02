@@ -1,6 +1,15 @@
+// To the global namespace just for now
+var theme = new Soundgun("sounds/long-test.ogg");
+
 $(function () {
     engine = new PongEngine();
     engine.startEngine();
+
+    // Some music
+    theme.setVolume(0);
+    theme.play();
+    theme.fadeIn();
+    theme.loop();
 
     var upPressed = function() {
         console.log("up");
