@@ -31,7 +31,11 @@ $(function () {
     var keyHandlers = {39: rightPressed, 38: upPressed, 37: leftPressed, 40: downPressed};
 
     $(document).keydown(function(e, v) {
-        keyHandlers[e.keyCode]();
+        try {
+            keyHandlers[e.keyCode]();
+        } catch(e) {
+            // Do nothing
+        }
         return false;
     });
 
