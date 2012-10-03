@@ -1,30 +1,22 @@
-function preloadImage(arrayOfImages) {
-	$(arrayOfImages).each(function() {
-		(new Image()).src = this;
+function preload(ArrayOfFiles) {
+	$(ArrayOfFiles).each(function() {
+		$.ajax({
+        	url: this,
+        	success: function() {
+        		/* Here something to do when loading is complete */
+            	//console.log("done loading " + this);
+        	}
+    	});
 	});
 }
 
-function preloadAudio(arrayOfAudio) {
-	$(arrayOfAudio).each(function() {
-		var audio = new Audio();
-		audio.addEventListener('canplaythrough', function() {
 
-		}, false);
-		audio.src = this;
-	});
-}
+/* Usage of preloader
 
-/* Usage
-preloadImage([
-	'kuva1.jpg',
-	'kuva2.jpg',
-	'kuva3.jpg'
-]);
-
-preloadAudio([
-	'audio1.mp3',
-	'audio2.mp3',
-	'audio3.mp3'
+preload([
+	'image.jpg',
+	'audio.mp3',
+	'video.avi'
 ]);
 
 */
