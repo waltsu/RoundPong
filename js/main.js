@@ -30,8 +30,13 @@ $(function () {
 
     var keyHandlers = {39: rightPressed, 38: upPressed, 37: leftPressed, 40: downPressed};
 
-    $('body').keydown(function(e, v) {
-        keyHandlers[e.keyCode]();
+    $(document).keydown(function(e, v) {
+        try {
+            keyHandlers[e.keyCode]();
+        } catch(e) {
+            // Do nothing
+        }
+        return false;
     });
 
     $('#main-canvas').bind('collision', function() {
