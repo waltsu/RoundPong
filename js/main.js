@@ -32,7 +32,7 @@ $(function () {
 
     $(document).keydown(function(e, v) {
         keyHandlers[e.keyCode]();
-        return true;
+        return false;
     });
 
     $('#main-canvas').bind('collision', function() {
