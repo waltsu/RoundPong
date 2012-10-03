@@ -24,6 +24,7 @@
     this.url = url;
     this.hasPlayed = false;
     this.hasLoaded = false;
+    this.playing = null;
     this.sound = null;
     this.support_list = null;
     this.interval = null;
@@ -37,6 +38,7 @@
 Soundgun.prototype.loadFile = function (url) {
         if (this.hasLoaded == true) {
             this.sound.pause();
+            this.playing = false;
             console.log("File " + this.url + " had already been loaded. Playback paused and new file loaded on top.");
         };
         this.sound = new Audio(url);
@@ -52,17 +54,20 @@ Soundgun.prototype.play = function () {
         this.hasPlayed = false;
     };
     this.sound.play();
+    this.playing = true;
     this.hasPlayed = true;
 };
 
 // Stop playing the sound file
 Soundgun.prototype.pause = function () {
     this.sound.pause();
+    this.playing = false;
 };
 
 // Resume playing
 Soundgun.prototype.resume = function () {
     this.sound.play();
+    this.playing = true;
 };
 
 // Loop the sound until unLoop is called
@@ -146,4 +151,12 @@ Soundgun.prototype.setVolume = function (level) {
 // Returns the volume level of the sound
 Soundgun.prototype.getVolume = function () {
     return this.volume.sound;
+};
+
+Soundgun.prototype.togglePlayback = function () {
+    if (this.playing == false || this.playing == null) {
+        this.resume();
+    } else {
+        this.pause();
+    }
 };
