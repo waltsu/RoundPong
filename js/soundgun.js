@@ -13,8 +13,8 @@
 // sound.loadFile('sounds/huge-bark.wav') --> pauses playback & loads a new audio file to the same instance
 // sound.isSupported() --> checks if the browser supports HTML5 audio at all, returns true / false
 // sound.supportedFormats() --> returns a two dimensional array of format support for example [MP3][true], [ACC][false] etc.
-// sound.fadeIn(70) --> fades the volume from its current level to 100%. Takes the speed as an argument. Less is faster. If no speed id defined will use 70 as a default.
-// sound.fadeOut(70) --> fades the volume from its current level to 0%. Takes the speed as an argument. Less is faster. If no speed id defined will use 70 as a default.
+// sound.fadeIn(70, 0.5) --> fades the volume from its current level to 50%. Takes the speed & sound level as arguments. On speed less is faster and on volume more is more (0-1). If no speed is defined will use 70 as a default.
+// sound.fadeOut(70, 0.1) --> fades the volume from its current level to 10%. Takes the speed and sound level arguments. On speed less is faster and on volume more is more (0-1). If no speed id defined will use 70 as a default.
 // sound.setVolume(0.5) --> sets the volume level of the sound
 // sound.getVolume() --> returns the current volume level of the sound
 
@@ -106,41 +106,43 @@ Soundgun.prototype.supportedFormats = function () {
 };
 
 // Fades sound in. If no speed is defined it uses 70 as a default.
-Soundgun.prototype.fadeIn = function (speed) {
+Soundgun.prototype.fadeIn = function (speed, level) {
     if (speed == null) {speed = 70};
+    if (level == null) {level = 1};
     if (this.interval != null) {
         clearInterval(this.interval);
         this.interval = null;    
     };
     var selfObj = this;
     this.interval = window.setInterval(function(){
-        if (selfObj.sound.volume <= 0.9) {
+        if (selfObj.sound.volume <= level) {
             selfObj.sound.volume += 0.01;
         } else {
-            selfObj.sound.volume = 1;
+            selfObj.sound.volume = level;
             clearInterval(selfObj.interval);
             selfObj.interval = null;
         }
-    }, speed);
+    }, speed, level);
 };
 
 // Fades sound out. If no speed is defined it uses 70 as a default.
-Soundgun.prototype.fadeOut = function (speed) {
+Soundgun.prototype.fadeOut = function (speed, level) {
     if (speed == null) {speed = 70};
+    if (level == null) {level = 0};
     if (this.interval != null) {
         clearInterval(this.interval);
         this.interval = null;
     };
     var selfObj = this;
     this.interval = window.setInterval(function(){
-        if (selfObj.sound.volume >= 0.1) {
+        if (selfObj.sound.volume >= level) {
             selfObj.sound.volume -= 0.01;
         } else {
-            selfObj.sound.volume = 0;
+            selfObj.sound.volume = level;
             clearInterval(selfObj.interval);
             selfObj.interval = null;
         }
-    }, speed);
+    }, speed, level);
 };
 
 // Sets the volume level of the sound. Condition: 0 >= value <= 1.
