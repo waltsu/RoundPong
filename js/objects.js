@@ -45,6 +45,57 @@ function Paddle(ctx, x, y) {
     this.width = 10; 
     this.rotation = 0;
 
+    this.drawDebug = function() {
+        // Draw debug-line for paddle rotation
+        this.ctx.beginPath();
+        this.ctx.moveTo(this.x, this.y);
+        rotationVector = this.getDirectionVector().multiply(200);
+        this.ctx.lineTo(this.x + rotationVector.elements[0], this.y + rotationVector.elements[1]);
+        this.ctx.stroke();
+        this.ctx.closePath();
+
+        // Draw line for center to circle
+        this.ctx.beginPath();
+        this.ctx.moveTo(this.x, this.y);
+        centerVector = this.getCenterVector();
+        this.ctx.lineTo(this.x + centerVector.elements[0], this.y + centerVector.elements[1]);
+        this.ctx.stroke();
+        this.ctx.closePath();
+
+    };
+
+    Paddle.prototype.calculateRotation = function() {
+        console.log("calculating rotation");
+        xCoordVector = $V([1,0]); 
+        centerVector = this.getCenterVector();
+        // TODO: Works just for upper part of round. Needs to be 2*PI - rotation. should do the trick
+        this.rotation = centerVector.angleFrom(xCoordVector);
+        console.log("calculated " + this.rotation);
+    }
+
+    Paddle.prototype.getCenterVector = function() {
+        return $V([centerX - this.x, centerY - this.y]);
+    }
+
+    Paddle.prototype.movePaddleRight = function() {
+        console.log("moving paddle right");
+        this.calculateRotation();
+        
+        // After paddle is in correct rotation, move paddle
+        directionVector = this.getDirectionVector();
+        this.x -= directionVector.elements[0];
+        this.y -= directionVector.elements[1];
+    }
+
+    Paddle.prototype.movePaddleLeft = function() {
+        console.log("moving paddle Left");
+        this.calculateRotation();
+
+        directionVector = this.getDirectionVector();
+        this.x += directionVector.elements[0];
+        this.y += directionVector.elements[1];
+    }
+
     Paddle.prototype.getOuterVector = function() {
         rotationVector = rotateVector(this.rotation, $V([0,1]));
         ret = rotateVector(Math.PI / 2, rotationVector);
@@ -57,15 +108,7 @@ function Paddle(ctx, x, y) {
 
     Paddle.prototype.render = function() {
         // TODO: debug
-        // Draw debug-line for paddle rotation
-        this.ctx.beginPath();
-        this.ctx.moveTo(this.x, this.y);
-        rotationVector = this.getDirectionVector().multiply(200);
-        this.ctx.lineTo(this.x + rotationVector.elements[0], this.y + rotationVector.elements[1]);
-        this.ctx.stroke();
-        this.ctx.closePath();
-
-
+        this.drawDebug();
         // TODO: End of debug
         drawVector = $V([0, 1]);
 

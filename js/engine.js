@@ -3,12 +3,12 @@ function PongEngine() {
     this.ctx = $('#main-canvas')[0].getContext("2d");
     this.ball = new Ball(this.ctx, 350, 300);
     //this.paddle = new Paddle(this.ctx, 200, 260)
-    this.paddle = new Paddle(this.ctx, 200, 250);
+    this.paddle = new Paddle(this.ctx, 200, 300);
     this.area = new Area(this.ctx);
 
     PongEngine.prototype.startEngine = function() {
         // Initialize
-        this.ball.movingVector.elements = [-4,0];
+        //this.ball.movingVector.elements = [-4,0];
 
         var runLoop = _.bind(this.runLoop, this);
         setInterval(runLoop, 33);

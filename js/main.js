@@ -24,12 +24,10 @@ $(function () {
         engine.ball.movingVector.elements[1]++;
         },
         rightPressed = function() {
-            console.log("right");
-            engine.ball.movingVector.elements[0]++;
+            engine.paddle.movePaddleRight();
         },
         leftPressed = function() {
-            console.log("left");
-            engine.ball.movingVector.elements[0]--;
+            engine.paddle.movePaddleLeft();
         };
 
     var keyHandlers = {39: rightPressed, 38: upPressed, 37: leftPressed, 40: downPressed};
