@@ -4,13 +4,11 @@ var hit = new Soundgun("sounds/hit.ogg");
 
 $(function () {
 
-/*
     // Some music
     theme.setVolume(0);
     theme.play();
     theme.fadeIn(70, 0.5);
     theme.loop();
-    */
 
     engine = new PongEngine();
     engine.startEngine();
