@@ -3,8 +3,7 @@ function PongEngine() {
     this.ctx = $('#main-canvas')[0].getContext("2d");
     this.ball = new Ball(this.ctx, 350, 300);
     //this.paddle = new Paddle(this.ctx, 200, 260)
-    this.paddle = new Paddle(this.ctx, 440, 100);
-    this.paddle.rotation = Math.PI / 2;
+    this.paddle = new Paddle(this.ctx, 200, 250);
     this.area = new Area(this.ctx);
 
     PongEngine.prototype.startEngine = function() {

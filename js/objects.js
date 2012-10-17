@@ -58,12 +58,12 @@ function Paddle(ctx, x, y) {
     Paddle.prototype.render = function() {
         // TODO: debug
         // Draw debug-line for paddle rotation
-        // this.ctx.beginPath();
-        // this.ctx.moveTo(this.x, this.y);
-        // rotationVector = this.getDirectionVector().multiply(200);
-        // this.ctx.lineTo(this.x + rotationVector.elements[0], this.y + rotationVector.elements[1]);
-        // this.ctx.stroke();
-        // this.ctx.closePath();
+        this.ctx.beginPath();
+        this.ctx.moveTo(this.x, this.y);
+        rotationVector = this.getDirectionVector().multiply(200);
+        this.ctx.lineTo(this.x + rotationVector.elements[0], this.y + rotationVector.elements[1]);
+        this.ctx.stroke();
+        this.ctx.closePath();
 
 
         // TODO: End of debug
