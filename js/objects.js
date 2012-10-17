@@ -108,7 +108,7 @@ function Paddle(ctx, x, y) {
 
     Paddle.prototype.render = function() {
         // TODO: debug
-        this.drawDebug();
+        //this.drawDebug();
         // TODO: End of debug
         drawVector = $V([0, 1]);
 
