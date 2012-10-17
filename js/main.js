@@ -43,7 +43,7 @@ $(function () {
         } catch(e) {
             // Do nothing
         }
-        return true;
+        return false;
     });
 
     $('#main-canvas').bind('collision', function() {
