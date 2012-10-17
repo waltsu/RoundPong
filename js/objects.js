@@ -65,12 +65,14 @@ function Paddle(ctx, x, y) {
     };
 
     Paddle.prototype.calculateRotation = function() {
-        console.log("calculating rotation");
         xCoordVector = $V([1,0]); 
         centerVector = this.getCenterVector();
-        // TODO: Works just for upper part of round. Needs to be 2*PI - rotation. should do the trick
+
         this.rotation = centerVector.angleFrom(xCoordVector);
-        console.log("calculated " + this.rotation);
+        // Because angleFrom returns only angles [0, Math.PI], we need to check if paddle is at the lower part of the circle. And if it is, calculate real angle with 2*PI - angle
+        if (centerVector.elements[1] < 0) {
+            this.rotation = 2*Math.PI - this.rotation;
+        }
     }
 
     Paddle.prototype.getCenterVector = function() {
@@ -78,7 +80,6 @@ function Paddle(ctx, x, y) {
     }
 
     Paddle.prototype.movePaddleRight = function() {
-        console.log("moving paddle right");
         this.calculateRotation();
         
         // After paddle is in correct rotation, move paddle
@@ -88,7 +89,6 @@ function Paddle(ctx, x, y) {
     }
 
     Paddle.prototype.movePaddleLeft = function() {
-        console.log("moving paddle Left");
         this.calculateRotation();
 
         directionVector = this.getDirectionVector();

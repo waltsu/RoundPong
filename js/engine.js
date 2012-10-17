@@ -8,7 +8,7 @@ function PongEngine() {
 
     PongEngine.prototype.startEngine = function() {
         // Initialize
-        //this.ball.movingVector.elements = [-4,0];
+        this.ball.movingVector.elements = [-2,0];
 
         var runLoop = _.bind(this.runLoop, this);
         setInterval(runLoop, 33);

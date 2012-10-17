@@ -24,10 +24,15 @@ $(function () {
         engine.ball.movingVector.elements[1]++;
         },
         rightPressed = function() {
-            engine.paddle.movePaddleRight();
+            // for now, move paddle 10 times right
+            for(var i =  0; i < 10; i++) {
+                engine.paddle.movePaddleRight();
+            }
         },
         leftPressed = function() {
-            engine.paddle.movePaddleLeft();
+            for(var i = 0; i < 10; i++) {
+                engine.paddle.movePaddleLeft();
+            }
         };
 
     var keyHandlers = {39: rightPressed, 38: upPressed, 37: leftPressed, 40: downPressed};
