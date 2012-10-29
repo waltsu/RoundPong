@@ -150,6 +150,13 @@ h1 {
 	font-weight: 200;
 }
 
+.canvasWrapper {
+    display: block;
+    position: relative;
+    width: 810px;
+    height: 610px;
+}
+
 #main-canvas {
   width: 810px;
   height: 610px;
@@ -159,6 +166,28 @@ h1 {
   -webkit-border-radius: 3px;
   border-radius: 3px;
   -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+}
+
+#score,
+#time {
+    position: absolute;
+    display: inline-block;
+    font-family: Arial;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 100%;
+}
+
+#score {
+    top:  15px;
+    left:  15px;
+    text-align: left;;
+}
+
+#time {
+    top:  15px;
+    right:  15px;
+    text-align: right;
 }
 
 .how-to-play p {

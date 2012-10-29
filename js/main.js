@@ -1,17 +1,27 @@
 // To the global namespace just for now
 var theme = new Soundgun("sounds/theme.ogg");
-var hit = new Soundgun("sounds/hit.ogg");
 
 $(function () {
 
-    // Some music
+    // Music & Sounds
+    var hit = new Soundgun("sounds/hit.ogg");
     theme.setVolume(0);
-    theme.play();
+    //theme.play();
     theme.fadeIn(70, 0.5);
     theme.loop();
 
+    // Text
+    var score = new Textgun("#score");
+    score.useTransition(1);
+    var time = new Textgun("#time");
+
     engine = new PongEngine();
     engine.startEngine();
+
+    // Start timer
+    var timer = new Timer();
+    timer.start();
+    setInterval(function() {time.setValue(timer.getFormattedTime());}, 100);
 
     var upPressed = function() {
         console.log("up");
@@ -19,7 +29,7 @@ $(function () {
     },
         downPressed = function() {
             console.log("down");
-        engine.ball.movingVector.elements[1]++;
+            engine.ball.movingVector.elements[1]++;
         },
         rightPressed = function() {
             // for now, move paddle 10 times right
@@ -47,6 +57,7 @@ $(function () {
     $('#main-canvas').bind('collision', function() {
         console.log("there was a collision!");
         hit.play();
+        score.setValue(Number(score.getValue()) + 150);
     });
 
 });

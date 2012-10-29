@@ -21,8 +21,12 @@
         	
         	<h1>RoundPong</h1>
         
-            <canvas id="main-canvas" width="800" height="600"></canvas>
-	        
+            <div class="canvasWrapper">
+                <canvas id="main-canvas" width="800" height="600"></canvas>
+                <div id="score">0</div>
+                <div id="time">00:00:00</div>
+	        </div>
+
 	        <div class="how-to-play">
 	        	<h2>How to play?</h2>
 	        	<img src="img/buttons.gif" alt="How to play" onClick="theme.togglePlayback();" />
@@ -44,6 +48,8 @@
         <script src="js/plugins.js"></script>
         <script src="js/sylvester.js"></script>
         <script src="js/soundgun.js"></script>
+        <script src="js/textgun.js"></script>
+        <script src="js/timer.js"></script>
         <script src="js/utils.js"></script>
         <script src="js/objects.js"></script>
         <script src="js/engine.js"></script>
