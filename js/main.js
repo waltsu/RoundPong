@@ -6,7 +6,7 @@ $(function () {
     // Music & Sounds
     var hit = new Soundgun("sounds/hit.ogg");
     theme.setVolume(0);
-    //theme.play();
+    theme.play();
     theme.fadeIn(70, 0.5);
     theme.loop();
 
