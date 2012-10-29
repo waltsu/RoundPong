@@ -54,10 +54,14 @@ $(function () {
         return false;
     });
 
+    // Bind all game events. Game engine triggers them to canvas
     $('#main-canvas').bind('collision', function() {
         console.log("there was a collision!");
         hit.play();
         score.setValue(Number(score.getValue()) + 150);
+    });
+    $('#main-canvas').bind('gameOver', function() {
+        console.log("Game is over!, reset things etc");
     });
 
 });

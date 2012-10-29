@@ -31,7 +31,10 @@ function PongEngine() {
             newMovVect = this.getMovingVectorAfterCollide();
             this.ball.movingVector = newMovVect;
             this.canvas.trigger('collision');
+        } else if(this.isGameOver()) {
+            this.canvas.trigger('gameOver');
         }
+
         this.ball.applyMovingVector();
     }
 
@@ -50,6 +53,12 @@ function PongEngine() {
             }
         }
         return false;
+    }
+
+    PongEngine.prototype.isGameOver = function() {
+        var ballDistance = this.ball.getBallDistanceFromCenter();
+        // TODO: Fix this!
+        return ballDistance > this.area.getRadius() + 10; // + 10 because for now the engine is a bit buggy, and hit will occur more or less over this.area.getRadius
     }
 
     PongEngine.prototype.getMovingVectorAfterCollide = function() {

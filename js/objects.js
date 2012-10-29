@@ -7,8 +7,8 @@ function Ball(ctx, x, y) {
     this.y = y;
     this.movingVector = $V([0,0]);
 
-    Ball.prototype.render = function() {
-        // TODO: DEBUG MOVING VECTOR
+    Ball.prototype.drawDebug = function() {
+        // MOVING VECTOR
         this.ctx.strokeStyle='#cc0000';
         this.ctx.beginPath();
         this.ctx.moveTo(this.x, this.y);
@@ -17,8 +17,21 @@ function Ball(ctx, x, y) {
         this.ctx.stroke();
         this.ctx.closePath();
 
-        this.ctx.strokeStyle='#000000';
+        // Center vector
+        var centerVector = this.getCenterVector();
 
+        this.ctx.beginPath();
+        this.ctx.moveTo(this.x, this.y);
+        this.ctx.lineTo(this.x + centerVector.elements[0], this.y + centerVector.elements[1]);
+        this.ctx.stroke();
+        this.ctx.closePath();
+
+        this.ctx.strokeStyle='#000000';
+    
+    }
+
+    Ball.prototype.render = function() {
+        this.drawDebug();
         this.ctx.beginPath();
         this.ctx.arc(this.x, this.y, 15, 0, Math.PI*2, true);
         this.ctx.stroke();
@@ -34,6 +47,17 @@ function Ball(ctx, x, y) {
     Ball.prototype.getNextPosition = function() {
         return [this.x + this.movingVector.elements[0], this.y + this.movingVector.elements[1]];
     }
+
+    Ball.prototype.getCenterVector = function() {
+        return $V([centerX - this.x, centerY - this.y]);
+    }
+
+    Ball.prototype.getBallDistanceFromCenter = function() {
+        return getMagnitude(this.getCenterVector());
+    }
+      
+      
+
 }
 
 function Paddle(ctx, x, y) {
@@ -141,11 +165,16 @@ function Paddle(ctx, x, y) {
 
 function Area(ctx) {
     this.ctx = ctx;
+    this.radius = 200;
 
     Area.prototype.render = function() {
         this.ctx.beginPath();
-        this.ctx.arc(centerX, centerY, 200, 0, Math.PI*2, true);
+        this.ctx.arc(centerX, centerY, this.radius, 0, Math.PI*2, true);
         this.ctx.stroke();
         this.ctx.closePath();
+    }
+
+    Area.prototype.getRadius = function() {
+        return this.radius;
     }
 }
