@@ -1,9 +1,12 @@
 function PongEngine() {
+    var ballStartPosition = {'x': 350, 'y': 300},
+        paddleStartPosition = {'x': 200, 'y': 300};
+
     this.canvas = $('#main-canvas');
     this.ctx = $('#main-canvas')[0].getContext("2d");
-    this.ball = new Ball(this.ctx, 350, 300);
+    this.ball = new Ball(this.ctx, ballStartPosition['x'], ballStartPosition['y']);
     //this.paddle = new Paddle(this.ctx, 200, 260)
-    this.paddle = new Paddle(this.ctx, 200, 300);
+    this.paddle = new Paddle(this.ctx, paddleStartPosition['x'], ballStartPosition['y']);
     this.area = new Area(this.ctx);
 
     PongEngine.prototype.startEngine = function() {
@@ -12,6 +15,16 @@ function PongEngine() {
 
         var runLoop = _.bind(this.runLoop, this);
         setInterval(runLoop, 33);
+    }
+
+    PongEngine.prototype.restartEngine = function() {
+        this.ball.movingVector.elements = [-2,0];
+        // Reset ball and paddle for start positions
+        this.ball.x = ballStartPosition['x'];
+        this.ball.y = ballStartPosition['y'];
+        this.paddle.x = paddleStartPosition['x'];
+        this.paddle.y = paddleStartPosition['y'];
+        this.paddle.rotation = 0;
     }
 
     PongEngine.prototype.renderGame = function() {

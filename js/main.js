@@ -61,7 +61,9 @@ $(function () {
         score.setValue(Number(score.getValue()) + 150);
     });
     $('#main-canvas').bind('gameOver', function() {
-        console.log("Game is over!, reset things etc");
+        console.log("Game is over! Restarting the engine!");
+        engine.restartEngine();
+
     });
 
 });
