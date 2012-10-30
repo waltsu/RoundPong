@@ -70,4 +70,18 @@ $(function () {
         score.setValue("");
     });
 
+    // When user submits scoreform
+    $('#forminId').submit(function(){
+        var nick = $('#nickId').val();
+        var dataString = 'nick=' + nick + '&time=' + time + '&score=' + score;
+        $.ajax({
+            type: 'POST',
+            url: 'commit.php',
+            data: dataString,
+            success: function(data) {
+                alert(data); // testing
+            }
+        });
+    });
+
 });
