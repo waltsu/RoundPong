@@ -190,6 +190,48 @@ h1 {
     text-align: right;
 }
 
+#nameModal {
+    display: block;
+    width: 40%;
+    height: 50%;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 3px;
+    position: absolute;
+    top: 25%;
+    left: 30%;
+    z-index: 9999;
+    padding: 30px;
+}
+
+#nameModal * {
+    width: 100%;
+    text-align: center;;
+}
+
+#nameModal h3 {
+    font-weight: 600;
+    font-size: 23px;
+}
+
+.submit-button {
+    display: block;
+    width: 150px;
+    height: 50px;
+    background-color: green;
+    line-height: 100%;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 10px;
+    margin-top: 20px;
+    font-weight: 600;
+    cursor: hand;
+    border-radius: 3px;
+}
+
+#no-button {
+    background-color: red;
+}
+
 .how-to-play p {
 	display: inline-block;
 	width: 609px;
