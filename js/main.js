@@ -25,7 +25,7 @@ $(function () {
     // Start timer
     var timer = new Timer();
     timer.start();
-    setInterval(function() {time.setValue(timer.getFormattedTime());}, 100);
+    var timeInterval = setInterval(function() {time.setValue(timer.getFormattedTime(timer.getCurrentTime()));}, 100);
 
     var upPressed = function() {
         console.log("up");
@@ -76,16 +76,14 @@ $(function () {
     });
     $('#main-canvas').bind('gameOver', function() {
         console.log("Game is over! Restarting the engine!");
-        // Restart timer
-        timer = new Timer();
-        timer.start();
-        // Zero points
-        score.setValue("");
+        engine.stopEngine();
+        timer.stop();
+        clearInterval(timeInterval);
+        console.log(timer.getFinalTime());
+
         // Display the nameModal
         $('#nameModal').fadeIn();
-        // Restart engine
-        //engine.restartEngine();
-        engine.stopEngine();
+        
     });
 
     // When user submits scoreform
