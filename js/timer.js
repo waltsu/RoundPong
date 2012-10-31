@@ -33,8 +33,8 @@
         return number;
     }
 
-    this.getFormattedTime = function () {
-        var pastTime = (new Date().getTime() - start);
+    this.getFormattedTime = function (milliseconds) {
+        var pastTime = milliseconds;
         var minutes = Math.floor(pastTime / 60000);
         pastTime = pastTime - minutes * 60000;
         var seconds = Math.floor(pastTime / 1000);
