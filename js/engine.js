@@ -17,6 +17,10 @@ function PongEngine() {
         setInterval(runLoop, 33);
     }
 
+    PongEngine.prototype.stopEngine = function() {
+        this.ball.movingVector.elements = [0,0]; 
+    }
+
     PongEngine.prototype.restartEngine = function() {
         this.ball.movingVector.elements = [-2,0];
         // Reset ball and paddle for start positions
