@@ -191,7 +191,7 @@ h1 {
 }
 
 #nameModal {
-    display: block;
+    display: none;
     width: 40%;
     height: 50%;
     background-color: rgba(0, 0, 0, 0.8);
