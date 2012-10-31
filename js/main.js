@@ -66,12 +66,15 @@ $(function () {
     });
     $('#main-canvas').bind('gameOver', function() {
         console.log("Game is over! Restarting the engine!");
-        engine.restartEngine();
         // Restart timer
         timer = new Timer();
         timer.start();
         // Zero points
         score.setValue("");
+        // Display the nameModal
+        $('#nameModal').fadeIn();
+        // Restart engine
+        //engine.restartEngine();
     });
 
     // When user submits scoreform
