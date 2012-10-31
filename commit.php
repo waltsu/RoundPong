@@ -17,6 +17,7 @@ try {
 	$sth->bindParam(':score', $score, PDO::PARAM_STR);
 	$sth->bindParam(':time', $time, PDO::PARAM_STR);
 	$sth->execute();
+	return "fufufufu";
     $db = null;
 } catch (PDOException $e) {
     print "Error!: " . $e->getMessage() . "<br/>";
