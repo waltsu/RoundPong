@@ -12,9 +12,11 @@ $time = $_POST['time'];
 
 try {
     $db = new PDO('mysql:host=localhost;dbname=roundpong', $user, $pass);
-    echo '1';
-    $db->exec("insert into score (nick, time, score) values ('kissa', 'aika', 0)");
-    echo '2';
+    $sth = $dbh->prepare('INSERT INTO score (nick, time, score) VALUES (:nick, :time, :score)');
+	$sth->bindParam(':nick', $nick, PDO::PARAM_STR);
+	$sth->bindParam(':score', $score, PDO::PARAM_STR);
+	$sth->bindParam(':time', $time, PDO::PARAM_STR);
+	$sth->execute();
     $db = null;
 } catch (PDOException $e) {
     print "Error!: " . $e->getMessage() . "<br/>";
