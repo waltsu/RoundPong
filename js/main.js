@@ -71,8 +71,8 @@ $(function () {
     });
 
     // When user submits scoreform
-    $('#forminId').submit(function(){
-        var nick = $('#nickId').val();
+    $('#scoreform').submit(function(){
+        var nick = $('#nick').val();
         var dataString = 'nick=' + nick + '&time=' + time + '&score=' + score;
         $.ajax({
             type: 'POST',
