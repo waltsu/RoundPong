@@ -238,6 +238,33 @@ h1 {
 	margin: 0 0 10px 10px;
 }
 
+.score-board {
+    color: white;
+    display: block;
+    width: 100%;
+    margin: 20px 0 0 0;
+}
+
+.score-board table {
+    width: 50%;
+    text-align: center;
+    float: right;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.score-board table tr:nth-child(2n+1) {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.score-board table tr:nth-child(1) {
+    background-color: gray;
+    border-bottom: 3px solid darkorange;
+}
+
+.score-board table tr:hover {
+    background-color: gray;
+}
+
 footer {
 	position: fixed;
 	bottom: 0;

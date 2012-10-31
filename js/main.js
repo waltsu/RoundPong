@@ -1,3 +1,6 @@
+// Init background image
+$.backstretch(["img/bg.jpg"], {fade: 200});
+
 // To the global namespace just for now
 var theme = new Soundgun("sounds/theme.ogg");
 
