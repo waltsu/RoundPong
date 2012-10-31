@@ -11,8 +11,8 @@ $score = $_POST['score'];
 $time = $_POST['time'];
 
 
-    $db = new PDO('mysql:host={$host};dbname={$dbname}', $user, $pass);
-    $db->exec("insert into score (nick, time, score) values ({$nick}, {$time}, {$score})")
+    $db = new PDO('mysql:host=localhost;dbname=roundpong', $user, $pass);
+    $db->exec("insert into score (nick, time, score) values (kissa, aika, 9000)")
     $db = null;
 
 ?>
