@@ -90,7 +90,7 @@ $(function () {
     // When user submits scoreform
     $('#yes-button').click(function(){
         var nick = $('#nick').val();
-        var dataString = 'nick=' + nick + '&time=' + timer.getFormattedTime() + '&score=' + score.getValue();
+        var dataString = 'nick=' + nick + '&time=' + timer.getFormattedTime(timer.getFinalTime()) + '&score=' + score.getValue();
         $.ajax({
             type: 'POST',
             url: 'commit.php',
@@ -105,6 +105,7 @@ $(function () {
     // When user restarts game
     $('#no-button').click(function(){
         $('#nameModal').fadeOut();
+        window.location.reload();
         // TODO
     });
 
