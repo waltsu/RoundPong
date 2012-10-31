@@ -200,7 +200,7 @@ h1 {
     position: absolute;
     top: 25%;
     left: 30%;
-    z-index: 9999;
+    z-index: 8888;
     padding: 30px;
 }
 
@@ -289,6 +289,7 @@ footer {
 	background-color: gray;
 	text-align: center;
 	border-top: 1px solid black;
+    z-index: 9999;
 }
 
 footer a {

@@ -99,6 +99,13 @@ $(function () {
                 alert(data); // testing
             }
         });
+        $('#nameModal').fadeOut();
+    });
+
+    // When user restarts game
+    $('#no-button').click(function(){
+        $('#nameModal').fadeOut();
+        // TODO
     });
 
 });
