@@ -161,7 +161,7 @@ h1 {
 #main-canvas {
     width: 810px;
     height: 610px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8);
 	border: 5px solid gray;
 	outline: 1px solid black;
     -webkit-border-radius: 3px;
@@ -252,7 +252,7 @@ h1 {
 .how-to-play,
 .score-board {
     background-color: #333;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.6);
     border-radius: 3px;
 }
 
@@ -260,6 +260,10 @@ h1 {
     display: block;
     float: left;
     width: 50%;
+}
+
+.score-explanation * {
+    padding-right: 20px;
 }
 
 .score-board table {
