@@ -50,12 +50,22 @@ $(function () {
     var keyHandlers = {39: rightPressed, 38: upPressed, 37: leftPressed, 40: downPressed};
 
     $(document).keydown(function(e, v) {
-        try {
-            keyHandlers[e.keyCode]();
-        } catch(e) {
-            // Do nothing
+        var isArrowkey = function(keycode) {
+            return keycode >= 37 && keycode <= 40;
+        },
+            forwardKeyPress = true;
+
+        if (!isArrowkey(e.keyCode)) {
+            forwardKeyPress = true;
+        }  else {
+            try {
+                keyHandlers[e.keyCode]();
+            } catch(e) {
+                // Do nothing
+            }
+            forwardKeyPress = false;
         }
-        return false;
+        return forwardKeyPress;
     });
 
     // Bind all game events. Game engine triggers them to canvas
