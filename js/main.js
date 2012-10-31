@@ -13,6 +13,7 @@ $(function () {
     // Text
     var score = new Textgun("#score");
     score.useTransition(1);
+    score.setValue('0');
     var time = new Textgun("#time");
 
     engine = new PongEngine();
