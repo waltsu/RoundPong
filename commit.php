@@ -10,13 +10,9 @@ $nick = $_POST['nick'];
 $score = $_POST['score'];
 $time = $_POST['time'];
 
-try {
+
     $db = new PDO('mysql:host{$host};dbname={$dbname}', $user, $pass);
     $db->exec("insert into score (nick, time, score) values ({$nick}, {$time}, {$score})")
     $db = null;
-} catch (PDOException $e) {
-    print "Error!: " . $e->getMessage() . "<br/>";
-    die();
-}
 
 ?>
