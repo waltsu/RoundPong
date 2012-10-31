@@ -8,17 +8,18 @@ function PongEngine() {
     //this.paddle = new Paddle(this.ctx, 200, 260)
     this.paddle = new Paddle(this.ctx, paddleStartPosition['x'], ballStartPosition['y']);
     this.area = new Area(this.ctx);
+    this.runLoopId = 0;
 
     PongEngine.prototype.startEngine = function() {
         // Initialize
         this.ball.movingVector.elements = [-2,0];
 
         var runLoop = _.bind(this.runLoop, this);
-        setInterval(runLoop, 33);
+        this.runLoopId = setInterval(runLoop, 33);
     }
 
     PongEngine.prototype.stopEngine = function() {
-        this.ball.movingVector.elements = [0,0]; 
+        clearInterval(this.runLoopId);
     }
 
     PongEngine.prototype.restartEngine = function() {
