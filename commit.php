@@ -24,8 +24,9 @@ if(isset($_POST)){
 	}
 } else {
 	$db = new PDO('mysql:host=localhost;dbname=roundpong', $user, $pass);
-	$array = $db->query("SELECT score FROM score")->fetchAll(PDO::FETCH_ASSOC);
+	$array = $db->query("SELECT nick, time, score FROM score")->fetchAll(PDO::FETCH_ASSOC);
 	echo json_encode($array);
+	echo "apina";
 }
 
 ?>
