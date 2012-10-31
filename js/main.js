@@ -71,9 +71,9 @@ $(function () {
     });
 
     // When user submits scoreform
-    $('#scoreform').submit(function(){
+    $('#yes-button').click(function(){
         var nick = $('#nick').val();
-        var dataString = 'nick=' + nick + '&time=' + time + '&score=' + score;
+        var dataString = 'nick=' + nick + '&time=' + timer.getFormattedTime() + '&score=' + score.getValue();
         $.ajax({
             type: 'POST',
             url: 'commit.php',
