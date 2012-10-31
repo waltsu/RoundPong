@@ -78,8 +78,9 @@ $(function () {
         console.log("Game is over! Restarting the engine!");
         engine.stopEngine();
         timer.stop();
+        time.setValue(timer.getFormattedTime(timer.getFinalTime()));
         clearInterval(timeInterval);
-        console.log(timer.getFinalTime());
+        console.log(timer.getFormattedTime(timer.getFinalTime()));
 
         // Display the nameModal
         $('#nameModal').fadeIn();
