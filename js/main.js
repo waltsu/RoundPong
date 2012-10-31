@@ -75,6 +75,7 @@ $(function () {
         $('#nameModal').fadeIn();
         // Restart engine
         //engine.restartEngine();
+        engine.stopEngine();
     });
 
     // When user submits scoreform
