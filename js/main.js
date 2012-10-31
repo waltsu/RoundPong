@@ -16,6 +16,7 @@ $(function () {
     // Text
     var score = new Textgun("#score");
     score.useTransition(1);
+    score.setValue('0');
     var time = new Textgun("#time");
 
     engine = new PongEngine();
@@ -74,9 +75,9 @@ $(function () {
     });
 
     // When user submits scoreform
-    $('#forminId').submit(function(){
-        var nick = $('#nickId').val();
-        var dataString = 'nick=' + nick + '&time=' + time + '&score=' + score;
+    $('#yes-button').click(function(){
+        var nick = $('#nick').val();
+        var dataString = 'nick=' + nick + '&time=' + timer.getFormattedTime() + '&score=' + score.getValue();
         $.ajax({
             type: 'POST',
             url: 'commit.php',
