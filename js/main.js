@@ -8,6 +8,7 @@ $(function () {
 
     // Music & Sounds
     var hit = new Soundgun("sounds/hit.ogg");
+    var gameover = new Soundgun("sounds/gameover.ogg");
     theme.setVolume(0);
     theme.play();
     theme.fadeIn(70, 0.5);
@@ -75,7 +76,8 @@ $(function () {
         score.setValue(Number(score.getValue()) + 150);
     });
     $('#main-canvas').bind('gameOver', function() {
-        console.log("Game is over! Restarting the engine!");
+        gameover.play();
+        theme.fadeOut();
         engine.stopEngine();
         timer.stop();
         time.setValue(timer.getFormattedTime(timer.getFinalTime()));
