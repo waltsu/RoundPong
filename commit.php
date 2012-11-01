@@ -16,7 +16,6 @@ if(isset($_POST)){
 		$sth->bindParam(':score', $score, PDO::PARAM_STR);
 		$sth->bindParam(':time', $time, PDO::PARAM_STR);
 		$sth->execute();
-		return "fufufufu";
 	    $db = null;
 	} catch (PDOException $e) {
 	    print "Error!: " . $e->getMessage() . "<br/>";
@@ -25,8 +24,10 @@ if(isset($_POST)){
 } else {
 	echo "apina";
 	$db = new PDO('mysql:host=localhost;dbname=roundpong', $user, $pass);
-	$array = $db->query("SELECT nick, time, score FROM score")->fetchAll(PDO::FETCH_ASSOC);
-	echo json_encode($array);
+	$statement = $db->prepare("SELECT nick, time, score FROM score");
+	$statement->execute();
+	$results = $statement->fetchAll(PDO::FETCH_ASSOC);
+	$json = json_encode($results);
 }
 
 ?>
