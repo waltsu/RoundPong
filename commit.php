@@ -4,7 +4,7 @@
 $user = 'gamedev';
 $pass = 'ThisShouldBeOver9000';
 
-if(isset($_POST['nick'])){
+if('POST' == $_SERVER['REQUEST_METHOD']){
 	$nick = $_POST['nick'];
 	$score = $_POST['score'];
 	$time = $_POST['time'];
