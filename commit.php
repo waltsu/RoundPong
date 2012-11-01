@@ -22,6 +22,7 @@ if('POST' == $_SERVER['REQUEST_METHOD']){
 	    die();
 	}
 } else {
+	header('Content-type: application/json');
 	$db = new PDO('mysql:host=localhost;dbname=roundpong', $user, $pass);
 	$statement = $db->prepare("SELECT nick, time, score FROM score ORDER BY score DESC LIMIT 10");
 	$statement->execute();
