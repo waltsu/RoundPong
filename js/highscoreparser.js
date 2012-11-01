@@ -1,5 +1,7 @@
 $(document).ready(function(){
   $.getJSON("commit.php",function(result){
-    console.log(result);
+    $.each(result, function(a, b){
+      console.log(a + "x" + b);
+    });
   });
 });
