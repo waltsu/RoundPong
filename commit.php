@@ -22,12 +22,11 @@ if(isset($_POST)){
 	    print "Error!: " . $e->getMessage() . "<br/>";
 	    die();
 	}
-}
-
+} else {
+	echo "apina";
 	$db = new PDO('mysql:host=localhost;dbname=roundpong', $user, $pass);
 	$array = $db->query("SELECT nick, time, score FROM score")->fetchAll(PDO::FETCH_ASSOC);
 	echo json_encode($array);
-	echo "apina";
-
+}
 
 ?>
