@@ -1,6 +1,6 @@
 <?php
 
-// credentials
+// credentials for database
 $user = 'gamedev';
 $pass = 'ThisShouldBeOver9000';
 
@@ -28,6 +28,8 @@ if(isset($_POST)){
 	$statement->execute();
 	$results = $statement->fetchAll(PDO::FETCH_ASSOC);
 	$json = json_encode($results);
+	echo $json;
+	$db = null;
 }
 
 ?>
