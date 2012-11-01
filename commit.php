@@ -23,7 +23,7 @@ if('POST' == $_SERVER['REQUEST_METHOD']){
 	}
 } else {
 	$db = new PDO('mysql:host=localhost;dbname=roundpong', $user, $pass);
-	$statement = $db->prepare("SELECT nick, time, score FROM score");
+	$statement = $db->prepare("SELECT nick, time, score FROM score ORDER BY score DESC LIMIT 10");
 	$statement->execute();
 	$results = $statement->fetchAll(PDO::FETCH_ASSOC);
 	$json = json_encode($results);
