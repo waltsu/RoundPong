@@ -22,7 +22,6 @@ if('POST' == $_SERVER['REQUEST_METHOD']){
 	    die();
 	}
 } else {
-	echo "apina";
 	$db = new PDO('mysql:host=localhost;dbname=roundpong', $user, $pass);
 	$statement = $db->prepare("SELECT nick, time, score FROM score");
 	$statement->execute();
