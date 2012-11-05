@@ -156,14 +156,15 @@ h1 {
     width: 810px;
     height: 610px;
     overflow: hidden;
+    background-image: url(../img/earth-bg.png);
+    background-position: center center;
 }
 
 #main-canvas {
     width: 810px;
     height: 610px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.2);
 	border: 5px solid gray;
-	outline: 1px solid black;
     -webkit-border-radius: 3px;
     border-radius: 3px;
     -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
@@ -177,6 +178,7 @@ h1 {
     font-size: 32px;
     font-weight: 600;
     line-height: 100%;
+    color: white;
 }
 
 #score {
