@@ -5,7 +5,6 @@ function PongEngine() {
     this.canvas = $('#main-canvas');
     this.ctx = $('#main-canvas')[0].getContext("2d");
     this.ball = new Ball(this.ctx, ballStartPosition['x'], ballStartPosition['y']);
-    //this.paddle = new Paddle(this.ctx, 200, 260)
     this.paddle = new Paddle(this.ctx, paddleStartPosition['x'], ballStartPosition['y']);
     this.area = new Area(this.ctx);
     this.runLoopId = 0;
@@ -61,12 +60,15 @@ function PongEngine() {
         paddleDirectionVector = this.paddle.getDirectionVector();
         ballToPaddleVector = $V([this.ball.x - this.paddle.x, this.ball.y - this.paddle.y]);
         // If ballToPaddleVector magnitude is smaller than paddle length, we might have hit
-        if (getMagnitude(ballToPaddleVector) < this.paddle.length) {
+        if (getMagnitude(ballToPaddleVector) < (this.paddle.length / 2)) {
             // If outer angle is smaller than PI/2, we are in the same line (or over) that paddle
             outerAngle = paddleOuterVector.angleFrom(ballToPaddleVector);
             // If directionAngle is smaller than PI/2, then ball is in the right side of paddle, so it might hit it
             directionAngle = paddleDirectionVector.angleFrom(ballToPaddleVector);
-            if (outerAngle < Math.PI / 2 && directionAngle < Math.PI / 2) {
+
+            var isBallBetweenPaddle = directionAngle >= 0 && directionAngle <= Math.PI;
+            var isBallInSameLineWithPaddle = outerAngle <= Math.PI / 2;
+            if (isBallBetweenPaddle && isBallInSameLineWithPaddle) {
                 return true;
             }
         }

@@ -104,20 +104,17 @@ function Paddle(ctx, x, y) {
     }
 
     Paddle.prototype.movePaddleRight = function() {
-        this.calculateRotation();
-        
-        // After paddle is in correct rotation, move paddle
         directionVector = this.getDirectionVector();
         this.x -= directionVector.elements[0];
         this.y -= directionVector.elements[1];
+        this.calculateRotation();
     }
 
     Paddle.prototype.movePaddleLeft = function() {
-        this.calculateRotation();
-
         directionVector = this.getDirectionVector();
         this.x += directionVector.elements[0];
         this.y += directionVector.elements[1];
+        this.calculateRotation();
     }
 
     Paddle.prototype.getOuterVector = function() {
@@ -140,20 +137,28 @@ function Paddle(ctx, x, y) {
         this.ctx.moveTo(this.x, this.y);
         
         firstSide = rotateVector(this.rotation, drawVector);
-        firstSide = firstSide.multiply(this.length); 
-        this.ctx.lineTo(this.x + firstSide.elements[0], this.y + firstSide.elements[1]);
-        
+        firstSide = firstSide.multiply(this.length / 2);
+        firstCornerX = this.x + firstSide.elements[0];
+        firstCornerY = this.y + firstSide.elements[1];
+        this.ctx.lineTo(firstCornerX, firstCornerY);
 
         secondSide = rotateVector(Math.PI / 2, firstSide);
         secondSide = secondSide.toUnitVector().multiply(this.width);
-        this.ctx.lineTo(this.x + firstSide.elements[0] + secondSide.elements[0], this.y + firstSide.elements[1] + secondSide.elements[1]);
+        secondCornerX  = firstCornerX + secondSide.elements[0];
+        secondCornerY  = firstCornerY + secondSide.elements[1];
+        this.ctx.lineTo(secondCornerX, secondCornerY);
 
         thirdSide = rotateVector(Math.PI / 2, secondSide);
-        thirdSide = thirdSide.toUnitVector();
-        this.ctx.lineTo(this.x + secondSide.elements[0] + thirdSide.elements[0], this.y + secondSide.elements[1] + thirdSide.elements[1]);
+        thirdSide = thirdSide.toUnitVector().multiply(this.length);
+        thirdCornerX = secondCornerX + thirdSide.elements[0];
+        thirdCornerY = secondCornerY + thirdSide.elements[1];
+        this.ctx.lineTo(thirdCornerX, thirdCornerY);
 
-        // Back to start
-        this.ctx.lineTo(this.x, this.y);
+        fourthSide = rotateVector(Math.PI / 2, thirdSide);
+        fourthSide = fourthSide.toUnitVector().multiply(this.width);
+        fourthCornerX = thirdCornerX + fourthSide.elements[0];
+        fourthCornerY = thirdCornerY + fourthSide.elements[1];
+        this.ctx.lineTo(fourthCornerX, fourthCornerY);
         
         this.ctx.stroke();
         this.ctx.fill();
