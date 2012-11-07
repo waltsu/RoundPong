@@ -116,10 +116,10 @@ Soundgun.prototype.fadeIn = function (speed, level) {
     var selfObj = this;
     this.interval = window.setInterval(function(){
         if (selfObj.sound.volume <= level) {
-            selfObj.sound.volume += 0.01;
+            selfObj.sound.volume = (Math.round(selfObj.sound.volume * 100) / 100) + 0.01;
         } else {
-            selfObj.sound.volume = level;
             clearInterval(selfObj.interval);
+            selfObj.sound.volume = level;
             selfObj.interval = null;
         }
     }, speed, level);
@@ -135,11 +135,11 @@ Soundgun.prototype.fadeOut = function (speed, level) {
     };
     var selfObj = this;
     this.interval = window.setInterval(function(){
-        if (selfObj.sound.volume >= level) {
-            selfObj.sound.volume -= 0.01;
+        if (selfObj.sound.volume > level) {
+            selfObj.sound.volume = (Math.round(selfObj.sound.volume * 100) / 100) - 0.01;
         } else {
-            selfObj.sound.volume = level;
             clearInterval(selfObj.interval);
+            selfObj.sound.volume = level;
             selfObj.interval = null;
         }
     }, speed, level);
