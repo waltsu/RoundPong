@@ -98,8 +98,9 @@ $(function () {
             url: 'commit.php',
             data: dataString,
             success: function(data) {
-                alert("Wrote to database ;)"); // testing
                 loadHighscore();
+                window.location.reload();
+                // TODO
             }
         });
         $('#nameModal').fadeOut();
