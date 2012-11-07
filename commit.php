@@ -5,9 +5,11 @@ $user = 'gamedev';
 $pass = 'ThisShouldBeOver9000';
 
 if('POST' == $_SERVER['REQUEST_METHOD']){
-	$nick = $_POST['nick'];
+	$nick = wordwrap($_POST['nick'], 15);
 	$score = $_POST['score'];
 	$time = $_POST['time'];
+
+	if(empty($nick)){ $nick = "anonymous"; }
 
 	try {
 	    $db = new PDO('mysql:host=localhost;dbname=roundpong', $user, $pass);
