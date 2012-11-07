@@ -103,6 +103,7 @@ $(function () {
             }
         });
         $('#nameModal').fadeOut();
+        return false;
     });
 
     // When user restarts game
