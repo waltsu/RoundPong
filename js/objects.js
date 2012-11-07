@@ -128,6 +128,13 @@ function Paddle(ctx, x, y) {
     }
 
     Paddle.prototype.render = function() {
+        var drawLineFromVector = _.bind(
+            function(startPoint, vector) {
+                cornerX = startPoint.x + vector.elements[0];
+                cornerY = startPoint.y + vector.elements[1];
+                this.ctx.lineTo(cornerX, cornerY);
+                return {"x": cornerX, "y": cornerY};
+            }, this);
         // TODO: debug
         //this.drawDebug();
         // TODO: End of debug
@@ -138,27 +145,19 @@ function Paddle(ctx, x, y) {
         
         firstSide = rotateVector(this.rotation, drawVector);
         firstSide = firstSide.multiply(this.length / 2);
-        firstCornerX = this.x + firstSide.elements[0];
-        firstCornerY = this.y + firstSide.elements[1];
-        this.ctx.lineTo(firstCornerX, firstCornerY);
+        firstCorner = drawLineFromVector({"x": this.x, "y": this.y}, firstSide);
 
         secondSide = rotateVector(Math.PI / 2, firstSide);
         secondSide = secondSide.toUnitVector().multiply(this.width);
-        secondCornerX  = firstCornerX + secondSide.elements[0];
-        secondCornerY  = firstCornerY + secondSide.elements[1];
-        this.ctx.lineTo(secondCornerX, secondCornerY);
+        secondCorner = drawLineFromVector(firstCorner, secondSide);
 
         thirdSide = rotateVector(Math.PI / 2, secondSide);
         thirdSide = thirdSide.toUnitVector().multiply(this.length);
-        thirdCornerX = secondCornerX + thirdSide.elements[0];
-        thirdCornerY = secondCornerY + thirdSide.elements[1];
-        this.ctx.lineTo(thirdCornerX, thirdCornerY);
+        thirdCorner = drawLineFromVector(secondCorner, thirdSide);
 
         fourthSide = rotateVector(Math.PI / 2, thirdSide);
         fourthSide = fourthSide.toUnitVector().multiply(this.width);
-        fourthCornerX = thirdCornerX + fourthSide.elements[0];
-        fourthCornerY = thirdCornerY + fourthSide.elements[1];
-        this.ctx.lineTo(fourthCornerX, fourthCornerY);
+        fourthCorner = drawLineFromVector(thirdCorner, fourthSide);
         
         this.ctx.stroke();
         this.ctx.fill();
