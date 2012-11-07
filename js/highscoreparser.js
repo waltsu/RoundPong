@@ -1,4 +1,4 @@
-$(document).ready(function(){
+
 
 	// add highscore entries to table
 	function loadHighscore(){
@@ -14,4 +14,3 @@ $(document).ready(function(){
 	setInterval(loadHighscore, 30000);
 
 	loadHighscore();
-});
