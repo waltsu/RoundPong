@@ -284,7 +284,7 @@ h1 {
 }
 
 .score-board table tr:hover {
-    background-color: gray;
+    background-color: rgba(121, 121, 121, 0.5);
 }
 
 .score-board table tr:first-child:hover {
