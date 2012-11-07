@@ -99,6 +99,7 @@ $(function () {
             data: dataString,
             success: function(data) {
                 alert("Wrote to database ;)"); // testing
+                loadHighscore();
             }
         });
         $('#nameModal').fadeOut();
