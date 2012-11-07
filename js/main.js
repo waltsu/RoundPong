@@ -90,7 +90,7 @@ $(function () {
     });
 
     // When user submits scoreform
-    $('#yes-button').click(function(){
+    $('#scoreform').submit(function(){
         var nick = $('#nick').val();
         var dataString = 'nick=' + nick + '&time=' + timer.getFormattedTime(timer.getFinalTime()) + '&score=' + score.getValue();
         $.ajax({
