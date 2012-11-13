@@ -105,7 +105,7 @@ Soundgun.prototype.supportedFormats = function () {
     }
 };
 
-// Fades sound in. If no speed is defined it uses 70 as a default.
+// Fades sound in and continues playing. If no speed is defined it uses 70 as a default.
 Soundgun.prototype.fadeIn = function (speed, level) {
     if (speed == null) {speed = 70};
     if (level == null) {level = 1};
@@ -125,7 +125,7 @@ Soundgun.prototype.fadeIn = function (speed, level) {
     }, speed, level);
 };
 
-// Fades sound out. If no speed is defined it uses 70 as a default.
+// Fades sound out and pauses playback. If no speed is defined it uses 70 as a default.
 Soundgun.prototype.fadeOut = function (speed, level) {
     if (speed == null) {speed = 70};
     if (level == null) {level = 0};
@@ -140,6 +140,7 @@ Soundgun.prototype.fadeOut = function (speed, level) {
         } else {
             clearInterval(selfObj.interval);
             selfObj.sound.volume = level;
+            selfObj.pause();
             selfObj.interval = null;
         }
     }, speed, level);
@@ -152,7 +153,7 @@ Soundgun.prototype.setVolume = function (level) {
 
 // Returns the volume level of the sound
 Soundgun.prototype.getVolume = function () {
-    return this.volume.sound;
+    return this.sound.volume;
 };
 
 Soundgun.prototype.togglePlayback = function () {

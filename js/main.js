@@ -1,25 +1,35 @@
-// Init background image
-$.backstretch(["img/bg.jpg"]);
-
-// To the global namespace just for now
-var theme = new Soundgun("sounds/theme.ogg");
-
 $(function () {
 
-    // Music & Sounds
-    var hit = new Soundgun("sounds/hit.ogg");
-    var gameover = new Soundgun("sounds/gameover.ogg");
-    theme.setVolume(0);
-    theme.play();
-    theme.fadeIn(70, 0.5);
-    theme.loop();
+    // Init background image
+    $.backstretch(["img/bg.jpg"]);
 
-    // Text
+    // Init sounds
+    soundArray = new Array();
+    soundArray[0] = new Soundgun("sounds/theme.ogg");;
+    soundArray[1] = new Soundgun("sounds/hit.ogg");;
+    soundArray[2] = new Soundgun("sounds/gameover.ogg");
+
+    soundArray[0].loop();
+    soundArray[0].setVolume(0);
+    soundArray[0].play();
+    soundArray[0].fadeIn(70, 0.5);
+
+    // Lets check if the user has left mute on last time
+    if (Cookies.enabled) {
+        if (Cookies.get('pongMuteState') == 0 || Cookies.get('pongMuteState') == null) {
+            // Do nothing
+        } else {
+            toggleMute(soundArray);
+        }
+    }
+
+    // Init changing text
+    var time = new Textgun("#time");
     var score = new Textgun("#score");
     score.useTransition(1);
     score.setValue('0');
-    var time = new Textgun("#time");
 
+    // Init engine
     engine = new PongEngine();
     engine.startEngine();
 
@@ -72,17 +82,16 @@ $(function () {
     // Bind all game events. Game engine triggers them to canvas
     $('#main-canvas').bind('collision', function() {
         console.log("there was a collision!");
-        hit.play();
+        soundArray[1].play();
         score.setValue(Number(score.getValue()) + 150);
     });
     $('#main-canvas').bind('gameOver', function() {
-        gameover.play();
-        theme.fadeOut();
+        soundArray[2].play();
+        soundArray[0].fadeOut();
         engine.stopEngine();
         timer.stop();
         time.setValue(timer.getFormattedTime(timer.getFinalTime()));
         clearInterval(timeInterval);
-        console.log(timer.getFormattedTime(timer.getFinalTime()));
 
         // Display the nameModal
         $('#nameModal').fadeIn();
@@ -112,6 +121,10 @@ $(function () {
         $('#nameModal').fadeOut();
         window.location.reload();
         // TODO
+    });
+
+    $('#howto').click(function() {
+        toggleMute(soundArray);
     });
 
 });

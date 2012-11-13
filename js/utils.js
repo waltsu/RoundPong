@@ -18,3 +18,23 @@ var getMagnitude = function(vector) {
 
    return sqrt(pow(x,2) + pow(y,2))
 }
+
+// Toggles the mute state of all the sounds in the passed array of soundGun objects
+// The toggling decition is made based on the sound level of the last element in the array
+var toggleMute = function(arrayOfSounds) {
+  if (arrayOfSounds[arrayOfSounds.length-1].getVolume() > 0) {
+    for (var i = 0; i < arrayOfSounds.length; i++) {
+      arrayOfSounds[i].setVolume(0);
+    };
+    if (Cookies.enabled) {
+      Cookies.set('pongMuteState', '1', { secure: true });
+    };
+  } else {
+    arrayOfSounds[0].setVolume(0.5); // Theme
+    arrayOfSounds[1].setVolume(1); // Hit
+    arrayOfSounds[2].setVolume(1); // Gameover
+    if (Cookies.enabled) {
+      Cookies.set('pongMuteState', '0', { secure: true });
+    };
+  }
+}
