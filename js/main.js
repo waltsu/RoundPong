@@ -20,6 +20,7 @@ $(function () {
         } else {
             soundArray[0].play();
             toggleMute(soundArray);
+            $('#mute-button').css('background-image', 'url(http://roundpong.dev/img/mute-on.png)');
             console.log("Toggled mute!");
         }
     } else {
@@ -127,8 +128,14 @@ $(function () {
         // TODO
     });
 
-    $('#howto').click(function() {
+    $('#mute-button').click(function(){
         toggleMute(soundArray);
+        var img = $('#mute-button');
+        if (img.css('background-image') == 'url(http://roundpong.dev/img/mute-off.png)') {
+            img.css('background-image', 'url(http://roundpong.dev/img/mute-on.png)');
+        } else {
+            img.css('background-image', 'url(http://roundpong.dev/img/mute-off.png)');
+        }
     });
 
 });

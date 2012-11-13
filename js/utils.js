@@ -28,7 +28,6 @@ var toggleMute = function(arrayOfSounds) {
     };
     if (Cookies.enabled) {
       Cookies.set('pongMuteState', '1');
-      console.log("Set cookie value to: " + Cookies('pongMuteState'));
     };
   } else {
     arrayOfSounds[0].setVolume(0.5); // Theme
@@ -36,7 +35,6 @@ var toggleMute = function(arrayOfSounds) {
     arrayOfSounds[2].setVolume(1); // Gameover
     if (Cookies.enabled) {
       Cookies.set('pongMuteState', '0');
-      console.log("Set cookie value to: " + Cookies('pongMuteState'));
     };
   }
 }

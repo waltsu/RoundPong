@@ -188,6 +188,17 @@ h1 {
     text-align: right;
 }
 
+#mute-button {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-image: url(../img/mute-off.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 #nameModal {
     display: none;
     width: 40%;
