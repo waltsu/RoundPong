@@ -27,14 +27,16 @@ var toggleMute = function(arrayOfSounds) {
       arrayOfSounds[i].setVolume(0);
     };
     if (Cookies.enabled) {
-      Cookies.set('pongMuteState', '1', { secure: true });
+      Cookies.set('pongMuteState', '1');
+      console.log("Set cookie value to: " + Cookies('pongMuteState'));
     };
   } else {
     arrayOfSounds[0].setVolume(0.5); // Theme
     arrayOfSounds[1].setVolume(1); // Hit
     arrayOfSounds[2].setVolume(1); // Gameover
     if (Cookies.enabled) {
-      Cookies.set('pongMuteState', '0', { secure: true });
+      Cookies.set('pongMuteState', '0');
+      console.log("Set cookie value to: " + Cookies('pongMuteState'));
     };
   }
 }

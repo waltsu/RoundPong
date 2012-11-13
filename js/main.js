@@ -11,16 +11,20 @@ $(function () {
 
     soundArray[0].loop();
     soundArray[0].setVolume(0);
-    soundArray[0].play();
-    soundArray[0].fadeIn(70, 0.5);
 
-    // Lets check if the user has left mute on last time
+    // Check if the browser supports cookies & if the user has left mute on last time
     if (Cookies.enabled) {
-        if (Cookies.get('pongMuteState') == 0 || Cookies.get('pongMuteState') == null) {
-            // Do nothing
+        if (Cookies.get('pongMuteState') == '0' || Cookies.get('pongMuteState') == null) {
+            soundArray[0].play();
+            soundArray[0].fadeIn(70, 0.5);
         } else {
+            soundArray[0].play();
             toggleMute(soundArray);
+            console.log("Toggled mute!");
         }
+    } else {
+        soundArray[0].play();
+        soundArray[0].fadeIn(70, 0.5);
     }
 
     // Init changing text
