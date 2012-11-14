@@ -30,7 +30,7 @@ $(function () {
         } else {
             soundArray[0].play();
             toggleMute(soundArray);
-            $('#mute-button').css('background-image', 'url(http://roundpong.dev/img/mute-on.png)');
+            $('#mute-button').css('background-image', 'url(img/mute-on.png)');
             console.log("Toggled mute!");
         }
     } else {
