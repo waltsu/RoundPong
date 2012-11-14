@@ -1,5 +1,15 @@
 $(function () {
 
+    // Preload stuff
+    var loader = new PxLoader(), 
+        bgImg = loader.addImage('img/bg.jpg'), 
+        earthImg = loader.addImage('img/earth-bg.png'), 
+        ufoImg = loader.addImage('img/ufo.png'),
+        earthImg = loader.addImage('img/mute-off.png'),
+        earthImg = loader.addImage('img/mute-on.png');
+
+    loader.start();
+    
     // Init background image
     $.backstretch(["img/bg.jpg"]);
 
