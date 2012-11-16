@@ -17,6 +17,8 @@
 // sound.fadeOut(70, 0.1) --> fades the volume from its current level to 10%. Takes the speed and sound level arguments. On speed less is faster and on volume more is more (0-1). If no speed id defined will use 70 as a default.
 // sound.setVolume(0.5) --> sets the volume level of the sound
 // sound.getVolume() --> returns the current volume level of the sound
+// sound.isFading() --> returns true or false if sound fadind is or isn't in progress
+// sound.isPlaying() --> returns true or false if sound is playing or isn't
 
 ;function Soundgun (url) {
 
@@ -24,7 +26,8 @@
     this.url = url;
     this.hasPlayed = false;
     this.hasLoaded = false;
-    this.playing = null;
+    this.fading = false;
+    this.playing = false;
     this.sound = null;
     this.support_list = null;
     this.interval = null;
@@ -107,6 +110,7 @@ Soundgun.prototype.supportedFormats = function () {
 
 // Fades sound in and continues playing. If no speed is defined it uses 70 as a default.
 Soundgun.prototype.fadeIn = function (speed, level) {
+    this.fading = true;
     if (speed == null) {speed = 70};
     if (level == null) {level = 1};
     if (this.interval != null) {
@@ -115,18 +119,21 @@ Soundgun.prototype.fadeIn = function (speed, level) {
     };
     var selfObj = this;
     this.interval = window.setInterval(function(){
+        console.log("Interval still going...");
         if (selfObj.sound.volume <= level) {
             selfObj.sound.volume = (Math.round(selfObj.sound.volume * 100) / 100) + 0.01;
         } else {
             clearInterval(selfObj.interval);
             selfObj.sound.volume = level;
             selfObj.interval = null;
+            this.fading = false;
         }
     }, speed, level);
 };
 
 // Fades sound out and pauses playback. If no speed is defined it uses 70 as a default.
 Soundgun.prototype.fadeOut = function (speed, level) {
+    this.fading = true;
     if (speed == null) {speed = 70};
     if (level == null) {level = 0};
     if (this.interval != null) {
@@ -142,6 +149,7 @@ Soundgun.prototype.fadeOut = function (speed, level) {
             selfObj.sound.volume = level;
             selfObj.pause();
             selfObj.interval = null;
+            this.fading = false;
         }
     }, speed, level);
 };
@@ -156,10 +164,24 @@ Soundgun.prototype.getVolume = function () {
     return this.sound.volume;
 };
 
+// Toggles playback
 Soundgun.prototype.togglePlayback = function () {
     if (this.playing == false || this.playing == null) {
         this.resume();
     } else {
         this.pause();
     }
+};
+
+Soundgun.prototype.isPlaying = function () {
+    return this.playing;
+};
+
+Soundgun.prototype.isFading = function () {
+    return this.fading;
+};
+
+Soundgun.prototype.forceStopFade = function () {
+    clearInterval(this.interval);
+    this.fading = false;
 };

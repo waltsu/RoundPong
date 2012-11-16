@@ -15,8 +15,8 @@ $(function () {
 
     // Init sounds
     soundArray = new Array();
-    soundArray[0] = new Soundgun("sounds/theme.ogg");;
-    soundArray[1] = new Soundgun("sounds/hit.ogg");;
+    soundArray[0] = new Soundgun("sounds/theme.ogg");
+    soundArray[1] = new Soundgun("sounds/hit.ogg");
     soundArray[2] = new Soundgun("sounds/gameover.ogg");
 
     soundArray[0].loop();
@@ -31,7 +31,6 @@ $(function () {
             soundArray[0].play();
             toggleMute(soundArray);
             $('#mute-button').css('background-image', 'url(img/mute-on.png)');
-            console.log("Toggled mute!");
         }
     } else {
         soundArray[0].play();
@@ -103,6 +102,7 @@ $(function () {
     $('#main-canvas').bind('gameOver', function() {
         soundArray[2].play();
         soundArray[0].fadeOut();
+        soundArray[0].pause();
         engine.stopEngine();
         timer.stop();
         time.setValue(timer.getFormattedTime(timer.getFinalTime()));

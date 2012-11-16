@@ -21,9 +21,13 @@ var getMagnitude = function(vector) {
 
 // Toggles the mute state of all the sounds in the passed array of soundGun objects
 // The toggling decition is made based on the sound level of the last element in the array
+// This function is not general in any way and thus it can not be used elsewhere 
 var toggleMute = function(arrayOfSounds) {
   if (arrayOfSounds[arrayOfSounds.length-1].getVolume() > 0) {
     for (var i = 0; i < arrayOfSounds.length; i++) {
+      if (arrayOfSounds[i].isFading()) {
+        arrayOfSounds[i].forceStopFade();
+      };
       arrayOfSounds[i].setVolume(0);
     };
     if (Cookies.enabled) {
