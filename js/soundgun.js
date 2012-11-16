@@ -119,7 +119,6 @@ Soundgun.prototype.fadeIn = function (speed, level) {
     };
     var selfObj = this;
     this.interval = window.setInterval(function(){
-        console.log("Interval still going...");
         if (selfObj.sound.volume <= level) {
             selfObj.sound.volume = (Math.round(selfObj.sound.volume * 100) / 100) + 0.01;
         } else {

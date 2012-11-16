@@ -141,10 +141,10 @@ $(function () {
     $('#mute-button').click(function(){
         toggleMute(soundArray);
         var img = $('#mute-button');
-        if (img.css('background-image') == 'url(http://roundpong.dev/img/mute-off.png)') {
-            img.css('background-image', 'url(http://roundpong.dev/img/mute-on.png)');
+        if (img.css('background-image').indexOf('mute-off.png') != -1) {
+            img.css('background-image', 'url(img/mute-on.png)');
         } else {
-            img.css('background-image', 'url(http://roundpong.dev/img/mute-off.png)');
+            img.css('background-image', 'url(img/mute-off.png)');
         }
     });
 
