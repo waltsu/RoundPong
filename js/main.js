@@ -48,7 +48,10 @@ $(function () {
 
         // Init engine
         engine = new PongEngine();
-        engine.startEngine();
+
+        $("#start-button").click(function() {
+            engine.startEngine();
+        });
 
         // Start timer
         var timer = new Timer();
