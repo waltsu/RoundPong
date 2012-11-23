@@ -132,10 +132,10 @@ $(function () {
 
         // When user submits scoreform
         $('#scoreform').submit(function(){
-            var nick = $('#nick').val();
-            var time = timer.getFormattedTime(timer.getFinalTime());
-            var score = score.getValue();
-            var dataString = 'nick=' + nick + '&time=' + time + '&score=' + score;
+            var newnick = $('#nick').val();
+            var newtime = timer.getFormattedTime(timer.getFinalTime());
+            var newscore = score.getValue();
+            var dataString = 'nick=' + newnick + '&time=' + newtime + '&score=' + newscore;
             $.ajax({
                 type: 'POST',
                 url: 'commit.php',
