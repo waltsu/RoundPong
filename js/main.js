@@ -141,7 +141,6 @@ $(function () {
                 url: 'commit.php',
                 data: dataString,
                 success: function(data) {
-                    console.log(data);
                     loadHighscore();
                     $('#nameModal').fadeOut();
                     $('html, body').animate({
