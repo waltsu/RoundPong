@@ -22,7 +22,22 @@ $(function () {
         soundArray[1] = new Soundgun("sounds/hit.ogg");
         soundArray[2] = new Soundgun("sounds/gameover.ogg");
 
+        // Set loop for theme
+        soundArray[0].loop();
 
+        // Check if the browser supports cookies & if the user has left mute on last time
+        if (Cookies.enabled) {
+            if (Cookies.get("pongMuteState") == 1) {
+                $('#mute-button').css('background-image', 'url(img/mute-on.png)');
+                soundArray[0].setVolume(0); // Theme
+                soundArray[1].setVolume(0); // Hit
+                soundArray[2].setVolume(0); // Gameover
+            } else {
+                soundArray[0].setVolume(0.5); // Theme
+                soundArray[1].setVolume(1); // Hit
+                soundArray[2].setVolume(1); // Gameover
+            }
+        };
 
         // Init changing text
         var time = new Textgun("#time");
@@ -34,30 +49,17 @@ $(function () {
 
         // Init engine
         function startGame() {
-            soundArray[0].loop();
-            soundArray[0].setVolume(0);
+            
+            // Play theme
+            soundArray[0].play();
 
-            // Check if the browser supports cookies & if the user has left mute on last time
-            if (Cookies.enabled) {
-                if (Cookies.get('pongMuteState') == '0' || Cookies.get('pongMuteState') == null) {
-                    soundArray[0].play();
-                    soundArray[0].fadeIn(70, 0.5);
-                } else {
-                    soundArray[0].play();
-                    toggleMute(soundArray);
-                    $('#mute-button').css('background-image', 'url(img/mute-on.png)');
-                }
-            } else {
-                soundArray[0].play();
-                soundArray[0].fadeIn(70, 0.5);
-            }
+            // Init score
             score.useTransition(1);
             score.setValue('0');
             // Start timer
             timer.start();
             timeInterval = setInterval(function() {time.setValue(timer.getFormattedTime(timer.getCurrentTime()));}, 100);
-            //soundArray[0].play();
-            soundArray[0].fadeIn();
+            // Start engine
             engine = new PongEngine();
             engine.startEngine();
         }
@@ -66,11 +68,6 @@ $(function () {
             $("#start-game-modal").hide();
             startGame();
         });
-
-        
-        
-        
-        
 
         var upPressed = function() {
             console.log("up");
@@ -121,8 +118,7 @@ $(function () {
         });
         $('#main-canvas').bind('gameOver', function() {
             soundArray[2].play();
-            soundArray[0].fadeOut();
-            //soundArray[0].pause();
+            soundArray[0].pause();
             engine.stopEngine();
             timer.stop();
             time.setValue(timer.getFormattedTime(timer.getFinalTime()));
