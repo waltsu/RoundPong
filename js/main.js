@@ -54,7 +54,7 @@ $(function () {
         }
         
         $("#start-button").click(function() {
-            $("start-game-modal").hide();
+            $("#start-game-modal").hide();
             startGame();
         });
 
