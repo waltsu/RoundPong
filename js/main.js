@@ -152,7 +152,7 @@ $(function () {
         });
 
         $('#mute-button').click(function(){
-            toggleMute(soundArray);
+            toggleMute2(soundArray);
             var img = $('#mute-button');
             if (img.css('background-image').indexOf('mute-off.png') != -1) {
                 img.css('background-image', 'url(img/mute-on.png)');

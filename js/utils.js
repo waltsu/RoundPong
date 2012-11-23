@@ -42,3 +42,24 @@ var toggleMute = function(arrayOfSounds) {
     };
   }
 }
+
+var toggleMute2 = function(arrayOfSounds) {
+  for (var i = 0; i < arrayOfSounds.length; i++) {
+      if (arrayOfSounds[i].isFading()) {
+        arrayOfSounds[i].forceStopFade();
+      };
+  };
+  if (Cookies.enabled) {
+    if (Cookies.get("pongMuteState") == 1) {
+      Cookies.set("pongMuteState", '0');
+      arrayOfSounds[0].setVolume(0.5); // Theme
+      arrayOfSounds[1].setVolume(1); // Hit
+      arrayOfSounds[2].setVolume(1); // Gameover
+    } else {
+      Cookies.set("pongMuteState", '1');
+      arrayOfSounds[0].setVolume(0); // Theme
+      arrayOfSounds[1].setVolume(0); // Hit
+      arrayOfSounds[2].setVolume(0); // Gameover
+    }
+  };
+}

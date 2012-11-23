@@ -225,6 +225,11 @@ h1 {
     font-size: 23px;
 }
 
+#nameModal input {
+    padding: 5px;
+    border-radius: 3px;
+}
+
 #start-game-modal {
     display: block;
     height: 36%;
