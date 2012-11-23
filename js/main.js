@@ -141,7 +141,10 @@ $(function () {
                 success: function(data) {
                     loadHighscore();
                     $('#nameModal').fadeOut();
-                    document.getElementById('score-board').scrollIntoView();
+                    $('html, body').animate({
+                        scrollTop: $("#elementtoScrollToID").offset().top
+                    }, 2000);
+                    $('#start-game-modal').fadeIn();
                 },
                 error: function(data) {
                     $('error-modal').fadeIn();
