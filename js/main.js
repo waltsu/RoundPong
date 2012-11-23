@@ -47,7 +47,7 @@ $(function () {
         var timer = new Timer();
         var timeInterval;
 
-        // "Restat" game function
+        // Start game function
         function startGame() {
             
             // Play theme
@@ -133,12 +133,15 @@ $(function () {
         // When user submits scoreform
         $('#scoreform').submit(function(){
             var nick = $('#nick').val();
-            var dataString = 'nick=' + nick + '&time=' + timer.getFormattedTime(timer.getFinalTime()) + '&score=' + score.getValue();
+            var time = timer.getFormattedTime(timer.getFinalTime());
+            var score = score.getValue();
+            var dataString = 'nick=' + nick + '&time=' + time + '&score=' + score;
             $.ajax({
                 type: 'POST',
                 url: 'commit.php',
                 data: dataString,
                 success: function(data) {
+                    console.log(data);
                     loadHighscore();
                     $('#nameModal').fadeOut();
                     $('html, body').animate({
