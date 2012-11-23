@@ -10,6 +10,6 @@ function loadHighscore(){
 		});
 }
 
-//setInterval(loadHighscore, 30000);
+setInterval(loadHighscore, 30000);
 
-//loadHighscore();
+loadHighscore();
