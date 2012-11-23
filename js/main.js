@@ -47,7 +47,7 @@ $(function () {
         var timer = new Timer();
         var timeInterval;
 
-        // Init engine
+        // "Restat" game function
         function startGame() {
             
             // Play theme
@@ -63,11 +63,6 @@ $(function () {
             engine = new PongEngine();
             engine.startEngine();
         }
-        
-        $("#start-button").click(function() {
-            $("#start-game-modal").hide();
-            startGame();
-        });
 
         var upPressed = function() {
             console.log("up");
@@ -110,6 +105,12 @@ $(function () {
             return forwardKeyPress;
         });
 
+        // Bind start game button
+        $("#start-button").click(function() {
+            $("#start-game-modal").hide();
+            startGame();
+        });
+
         // Bind all game events. Game engine triggers them to canvas
         $('#main-canvas').bind('collision', function() {
             console.log("there was a collision!");
@@ -139,11 +140,13 @@ $(function () {
                 data: dataString,
                 success: function(data) {
                     loadHighscore();
-                    window.location.reload();
-                    // TODO
+                    $('#nameModal').fadeOut();
+                    document.getElementById('score-board').scrollIntoView();
+                },
+                error: function(data) {
+                    $('error-modal').fadeIn();
                 }
             });
-            $('#nameModal').fadeOut();
             return false;
         });
 
@@ -151,8 +154,11 @@ $(function () {
         $('#no-button').click(function(){
             $('#nameModal').fadeOut();
             startGame();
-            //window.location.reload();
-            // TODO
+        });
+
+        // When clics error refres page
+        $('#reload-page-button').click(function(){
+            window.location.reload();
         });
 
         $('#mute-button').click(function(){
