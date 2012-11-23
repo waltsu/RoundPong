@@ -6,7 +6,7 @@
 			$('.score-board table').empty();
 			$('.score-board table').append('<tr><th class="refresh-highscore"></th><th>Nickname</th><th>Time played</th><th>Score</th></tr>');
     		$.each(result, function(i){
-      			$('.score-board table').append('<tr><td>' + i + '</td><td>' + result[i].nick + '</td><td>' + result[i].time + '</td><td>' + result[i].score + '</td></tr>');
+      			$('.score-board table').append('<tr><td>' + i+1 + '.</td><td>' + result[i].nick + '</td><td>' + result[i].time + '</td><td>' + result[i].score + '</td></tr>');
     		});
   		});
 	}
