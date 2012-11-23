@@ -43,14 +43,18 @@ $(function () {
         // Init changing text
         var time = new Textgun("#time");
         var score = new Textgun("#score");
-        score.useTransition(1);
-        score.setValue('0');
-
-        // Init engine
+        
         engine = new PongEngine();
 
-        $("#start-button").click(function() {
+        // Init engine
+        function startGame() {
+            score.useTransition(1);
+            score.setValue('0');
             engine.startEngine();
+        }
+        
+        $("#start-button").click(function() {
+            startGame();
         });
 
         // Start timer
