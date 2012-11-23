@@ -145,7 +145,8 @@ $(function () {
         // When user restarts game
         $('#no-button').click(function(){
             $('#nameModal').fadeOut();
-            window.location.reload();
+            startGame();
+            //window.location.reload();
             // TODO
         });
 
