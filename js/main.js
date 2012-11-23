@@ -21,6 +21,7 @@ $(function () {
         soundArray[0] = new Soundgun("sounds/theme.ogg");
         soundArray[1] = new Soundgun("sounds/hit.ogg");
         soundArray[2] = new Soundgun("sounds/gameover.ogg");
+        var muteButton = $('#mute-button');
 
         // Set loop for theme
         soundArray[0].loop();
@@ -143,7 +144,7 @@ $(function () {
                     $('#nameModal').fadeOut();
                     $('html, body').animate({
                         scrollTop: $("#score-board").offset().top
-                    }, 2000);
+                    }, 1500);
                     $('#start-game-modal').fadeIn();
                 },
                 error: function(data) {
@@ -165,13 +166,12 @@ $(function () {
         });
 
         $('#mute-button').click(function(){
-            toggleMute2(soundArray);
-            var img = $('#mute-button');
-            if (img.css('background-image').indexOf('mute-off.png') != -1) {
-                img.css('background-image', 'url(img/mute-on.png)');
+            if (muteButton.css('background-image').indexOf('mute-off.png') != -1) {
+                muteButton.css('background-image', 'url(img/mute-on.png)');
             } else {
-                img.css('background-image', 'url(img/mute-off.png)');
+                muteButton.css('background-image', 'url(img/mute-off.png)');
             }
+            toggleMute(soundArray);
         });
 
     });
