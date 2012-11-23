@@ -142,7 +142,7 @@ $(function () {
                     loadHighscore();
                     $('#nameModal').fadeOut();
                     $('html, body').animate({
-                        scrollTop: $("#elementtoScrollToID").offset().top
+                        scrollTop: $("#score-board").offset().top
                     }, 2000);
                     $('#start-game-modal').fadeIn();
                 },
