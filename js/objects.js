@@ -1,5 +1,6 @@
 var centerX = 400;
 var centerY = 300;
+var areaRadius = 200;
 
 function Ball(ctx, x, y, img) {
     this.ctx = ctx;
@@ -85,6 +86,18 @@ function Paddle(ctx, x, y) {
 
     };
 
+    Paddle.prototype.fixDistance = function() {
+        var distance = getMagnitude(this.getCenterVector());
+        var unitCenterVEctor = this.getCenterVector().toUnitVector();
+        while (distance > areaRadius) {
+            unitCenterVector = this.getCenterVector().toUnitVector();
+            this.x += unitCenterVector.elements[0];
+            this.y += unitCenterVector.elements[1];
+            distance = getMagnitude(this.getCenterVector());
+        }
+
+    }
+
     Paddle.prototype.calculateRotation = function() {
         xCoordVector = $V([1,0]); 
         centerVector = this.getCenterVector();
@@ -105,6 +118,7 @@ function Paddle(ctx, x, y) {
         this.x -= directionVector.elements[0];
         this.y -= directionVector.elements[1];
         this.calculateRotation();
+        this.fixDistance();
     }
 
     Paddle.prototype.movePaddleLeft = function() {
@@ -112,6 +126,7 @@ function Paddle(ctx, x, y) {
         this.x += directionVector.elements[0];
         this.y += directionVector.elements[1];
         this.calculateRotation();
+        this.fixDistance();
     }
 
     Paddle.prototype.getOuterVector = function() {
@@ -166,7 +181,7 @@ function Paddle(ctx, x, y) {
 
 function Area(ctx) {
     this.ctx = ctx;
-    this.radius = 200;
+    this.radius = areaRadius;
 
     Area.prototype.render = function() {
         this.ctx.beginPath();
