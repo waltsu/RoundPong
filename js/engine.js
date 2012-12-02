@@ -67,7 +67,9 @@ function PongEngine(ballImg) {
             directionAngle = paddleDirectionVector.angleFrom(ballToPaddleVector);
 
             var isBallBetweenPaddle = directionAngle >= 0 && directionAngle <= Math.PI;
-            var isBallInSameLineWithPaddle = outerAngle <= Math.PI / 2;
+            // We are taking account that picture is 50*50px. And getBallDistanceFromCenter returns distance between ball's center point and center
+            var ballDistance = this.ball.getBallDistanceFromCenter() + this.ball.img.width;
+            var isBallInSameLineWithPaddle = ballDistance >= this.area.getRadius(); 
             if (isBallBetweenPaddle && isBallInSameLineWithPaddle) {
                 return true;
             }
@@ -78,7 +80,7 @@ function PongEngine(ballImg) {
     PongEngine.prototype.isGameOver = function() {
         var ballDistance = this.ball.getBallDistanceFromCenter();
         // TODO: Fix this!
-        return ballDistance > this.area.getRadius() + 10; // + 10 because for now the engine is a bit buggy, and hit will occur more or less over this.area.getRadius
+        return ballDistance > this.area.getRadius() - 10;
     }
 
     PongEngine.prototype.getMovingVectorAfterCollide = function() {
