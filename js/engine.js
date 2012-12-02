@@ -1,10 +1,10 @@
-function PongEngine() {
+function PongEngine(ballImg) {
     var ballStartPosition = {'x': 350, 'y': 300},
         paddleStartPosition = {'x': 200, 'y': 300};
 
     this.canvas = $('#main-canvas');
     this.ctx = $('#main-canvas')[0].getContext("2d");
-    this.ball = new Ball(this.ctx, ballStartPosition['x'], ballStartPosition['y']);
+    this.ball = new Ball(this.ctx, ballStartPosition['x'], ballStartPosition['y'], ballImg);
     this.paddle = new Paddle(this.ctx, paddleStartPosition['x'], ballStartPosition['y']);
     this.area = new Area(this.ctx);
     this.runLoopId = 0;
