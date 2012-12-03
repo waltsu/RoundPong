@@ -178,12 +178,13 @@ $(function () {
             toggleMute(soundArray);
         });
 
+        // refresh-images rotation value
+        var rotationValue = 0;
         $(".refresh-image").click(function(){
-            var value = 0;
             console.log("rotate clicked");
-            value +=720;
+            rotationValue += 720;
             $(this).rotate({
-                animateTo: value,
+                animateTo: rotationValue,
                 duration: 2000
             });
         });
