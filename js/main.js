@@ -143,6 +143,7 @@ $(function () {
                 data: dataString,
                 success: function(data) {
                     loadHighscore(newnick, newtime, newscore);
+                    console.log(newnick + "," + newtime + "," + newscore);
                     $('#nameModal').fadeOut();
                     $('html, body').animate({
                         scrollTop: $("#score-board").offset().top
