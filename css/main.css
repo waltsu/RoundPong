@@ -323,6 +323,7 @@ h1 {
     width: 25px;
     padding: 5px;
     position: absolute;
+    top: 0;
     left: 400px;
 }
 
