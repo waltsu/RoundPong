@@ -175,7 +175,9 @@ h1 {
 }
 
 #score,
-#time {
+#time,
+.score-title,
+.time-title {
     position: absolute;
     display: inline-block;
     font-family: Arial;
@@ -185,14 +187,27 @@ h1 {
     color: white;
 }
 
+.score-title,
+.time-title {
+    top: 15px;
+}
+
+.score-title {
+    left: 15px;
+}
+
+.time-title {
+    right: 15px;
+}
+
 #score {
-    top:  15px;
+    top:  55px;
     left:  15px;
     text-align: left;
 }
 
 #time {
-    top:  15px;
+    top:  55px;
     right:  15px;
     text-align: right;
 }
