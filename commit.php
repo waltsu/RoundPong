@@ -19,7 +19,7 @@ if('POST' == $_SERVER['REQUEST_METHOD']){
 		$sth->bindParam(':time', $time, PDO::PARAM_STR);
 		$sth->execute();
 		$id = $db->lastInsertId();
-		$sth = $db->prepare("SELECT count(*) FROM score WHERE score < (SELECT score FROM score WHERE id = :id) ORDER BY score DESC LIMIT 1");
+		$sth = $db->prepare("SELECT count(*) FROM score WHERE score < (SELECT score FROM score ORDER BY score DESC WHERE id = :id) LIMIT 1");
 		$sth->bindParam(':id', $id, PDO::PARAM_STR);
 		$sth->execute();
 		$result = $sth->fetch();
