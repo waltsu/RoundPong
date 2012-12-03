@@ -1,5 +1,5 @@
 var value = 0
-$("#refresh-image").rotate({ 
+$(".refresh-image").rotate({ 
    bind: 
      { 
         click: function(){
