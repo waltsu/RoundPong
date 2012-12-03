@@ -145,6 +145,7 @@ $(function () {
                 url: 'commit.php',
                 data: dataString,
                 success: function(data) {
+                    console.log(data);
                     if(newnick == "") { newnick = "anonymous"; }
                     loadHighscore(newnick, newtime, newscore);
                     console.log(newnick + "," + newtime + "," + newscore);

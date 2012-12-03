@@ -18,6 +18,12 @@ if('POST' == $_SERVER['REQUEST_METHOD']){
 		$sth->bindParam(':score', $score, PDO::PARAM_STR);
 		$sth->bindParam(':time', $time, PDO::PARAM_STR);
 		$sth->execute();
+		$id = $db->lastInsertId();
+		$sth = $db->prepare("SELECT count(*) FROM score WHERE score < (SELECT score FROM score WHERE id = :id) LIMIT 1");
+		$sth->bindParam(':id', $id, PDO::PARAM_STR);
+		$sth->execute();
+		$result = $sth->fetch();
+		echo $result[0];
 	    $db = null;
 	} catch (PDOException $e) {
 	    print "Error!: " . $e->getMessage() . "<br/>";
