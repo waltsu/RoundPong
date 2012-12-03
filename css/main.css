@@ -293,6 +293,7 @@ h1 {
     width: 100%;
     margin: 20px 0 0 0;
     padding: 10px;
+    position: relative;
 }
 
 .how-to-play,
@@ -321,6 +322,8 @@ h1 {
 .refresh-image {
     width: 25px;
     padding: 5px;
+    position: absolute;
+    left: 400px;
 }
 
 .score-board table tr:nth-child(1) {
