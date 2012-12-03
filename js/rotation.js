@@ -1,4 +1,4 @@
-var value = 0
+var value = 0;
 $(".refresh-image").rotate({ 
    bind: 
      { 
@@ -7,7 +7,7 @@ $(".refresh-image").rotate({
             $(this).rotate({
                 animateTo:value,
                 duration:2000
-            })
+            });
         }
      } 
    
