@@ -296,7 +296,7 @@ h1 {
 
 .how-to-play p {
 	display: inline-block;
-	width: 609px;
+	width: 589px;
 	margin: 0 0 10px 10px;
     padding: 10px;
 }
@@ -307,7 +307,6 @@ h1 {
     height: 300px;
     width: 100%;
     margin: 20px 0 0 0;
-    padding: 10px;
     position: relative;
 }
 
@@ -316,6 +315,7 @@ h1 {
     background-color: #333;
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 3px;
+    padding: 10px;
 }
 
 .score-explanation {
