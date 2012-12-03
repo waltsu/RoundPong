@@ -97,7 +97,7 @@ textarea {
    ========================================================================== */
 
 
-div, p, h1, h2, h3, h4, h5, h6 {	
+div, p, h1, h2, h3, h4, h5, h6, .refresh-image {	
     /* More natural box model */
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -320,7 +320,7 @@ h1 {
 
 .refresh-image {
     width: 25px;
-    padding: 2px;
+    padding: 5px;
 }
 
 .score-board table tr:nth-child(1) {
