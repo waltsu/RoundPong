@@ -15,7 +15,7 @@ function loadHighscore(xnick, xtime, xscore) {
 				$('.score-board table').append('<tr><td>' + n + '.</td><td>' + result[i].nick + '</td><td>' + result[i].time + '</td><td>' + result[i].score + '</td></tr>');
 			}
 		});
-		if(added == 0 && time != "" && score != "") {
+		if(added == 0 && xtime != null && xscore != null) {
 			// if your score is not found from top10 it will be added at the bottom of the list
 			$('.score-board table').append('<tr class="hilight"><td>x.</td><td>' + xnick + '</td><td>' + xtime + '</td><td>' + xscore + '</td></tr>');
 		}
