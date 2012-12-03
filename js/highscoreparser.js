@@ -4,7 +4,7 @@ function loadHighscore(xnick, xtime, xscore) {
 	var added = 0;
 	$.getJSON("commit.php",function(result){
 		$('.score-board table').empty();
-		$('.score-board table').append('<tr><th class="refresh-highscore">⟳</th><th>Nickname</th><th>Time played</th><th>Score</th></tr>');
+		$('.score-board table').append('<tr><th class="refresh-highscore"></th><th>Nickname</th><th>Time played</th><th>Score</th></tr>');
 		$.each(result, function(i){
 			var n = Number(i) + 1;
 			if(xnick == result[i].nick && xtime == result[i].time && xscore == result[i].score) {
@@ -25,7 +25,3 @@ function loadHighscore(xnick, xtime, xscore) {
 setInterval(loadHighscore, 30000);
 
 loadHighscore(null, null, null);
-
-$(".refresh-highscore").click(function() {
-	loadHighscore(null, null, null);
-});
