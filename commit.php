@@ -19,7 +19,11 @@ if('POST' == $_SERVER['REQUEST_METHOD']){
 		$sth->bindParam(':time', $time, PDO::PARAM_STR);
 		$sth->execute();
 		$id = $db->lastInsertId();
-		echo $id;
+		$sth = $db->prepare("SELECT RowNr FROM ( SELECT ROW_NUMBER() OVER (ORDER BY score DESC, time ASC) AS RowNr, id FROM score ) sub WHERE sub.id = :id");
+		$sth->bindParam(':id', $id, PDO::PARAM_STR);
+		$sth->execute();
+		$results = $sth->fetchAll(PDO::FETCH_ASSOC);
+		echo $results;
 	    $db = null;
 	} catch (PDOException $e) {
 	    print "Error!: " . $e->getMessage() . "<br/>";
