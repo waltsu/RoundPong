@@ -25,3 +25,5 @@ function loadHighscore(xnick, xtime, xscore) {
 setInterval(loadHighscore, 30000);
 
 loadHighscore(null, null, null);
+
+$(".refresh-highscore").append("⟳");
