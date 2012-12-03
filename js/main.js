@@ -181,7 +181,7 @@ $(function () {
         // refresh-images rotation value
         var rotationValue = 0;
         $(".refresh-image").click(function(){
-            console.log("rotate clicked");
+            loadHighscore(null, null, null);
             rotationValue += 720;
             $(this).rotate({
                 animateTo: rotationValue,
