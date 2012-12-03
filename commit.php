@@ -19,7 +19,7 @@ if('POST' == $_SERVER['REQUEST_METHOD']){
 		$sth->bindParam(':time', $time, PDO::PARAM_STR);
 		$sth->execute();
 		//$id = $db->lastInsertId();
-		return "lol";
+		echo "lol";
 	    $db = null;
 	} catch (PDOException $e) {
 	    print "Error!: " . $e->getMessage() . "<br/>";
