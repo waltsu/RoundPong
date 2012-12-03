@@ -178,6 +178,17 @@ $(function () {
             toggleMute(soundArray);
         });
 
+        // refresh-images rotation value
+        var rotationValue = 0;
+        $(".refresh-image").click(function(){
+            console.log("rotate clicked");
+            rotationValue += 720;
+            $(this).rotate({
+                animateTo: rotationValue,
+                duration: 2000
+            });
+        });
+
     });
     
 });
