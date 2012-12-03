@@ -23,7 +23,7 @@ if('POST' == $_SERVER['REQUEST_METHOD']){
 		$sth->bindParam(':id', $id, PDO::PARAM_STR);
 		$sth->execute();
 		$result = $sth->fetch();
-		echo $result;
+		echo $result[0];
 	    $db = null;
 	} catch (PDOException $e) {
 	    print "Error!: " . $e->getMessage() . "<br/>";
