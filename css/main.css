@@ -318,9 +318,9 @@ h1 {
     float: right;
 }
 
-/*.score-board table tr:nth-child(2n+1) {
-    background-color: rgba(0, 0, 0, 0.9);
-}*/
+.refresh-image {
+    width: 25px;
+}
 
 .score-board table tr:nth-child(1) {
     border-bottom: 3px solid darkorange;
@@ -335,6 +335,7 @@ h1 {
 }
 
 .hilight {
+    margin-top: 5px;
     background-color: darkorange;
 }
 
