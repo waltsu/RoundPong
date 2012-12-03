@@ -320,6 +320,7 @@ h1 {
 
 .refresh-image {
     width: 25px;
+    padding: 2px;
 }
 
 .score-board table tr:nth-child(1) {
