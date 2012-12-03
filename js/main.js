@@ -50,6 +50,7 @@ $(function () {
 
         // Init TipTip
         $(".refresh-image").tipTip({defaultPosition: "top", });
+        $("#mute-button").tipTip({defaultPosition: "top", });
 
         // Start game function
         function startGame() {
