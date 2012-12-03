@@ -48,6 +48,9 @@ $(function () {
         var timer = new Timer();
         var timeInterval;
 
+        // Init TipTip
+        $(".refresh-image").tipTip({defaultPosition: "top", });
+
         // Start game function
         function startGame() {
             
