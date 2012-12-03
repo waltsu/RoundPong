@@ -19,11 +19,11 @@ if('POST' == $_SERVER['REQUEST_METHOD']){
 		$sth->bindParam(':time', $time, PDO::PARAM_STR);
 		$sth->execute();
 		$id = $db->lastInsertId();
-		$sth = $db->prepare("SELECT RowNr FROM ( SELECT ROW_NUMBER() OVER (ORDER BY score DESC, time ASC) AS RowNr, score FROM score ) sub WHERE sub.id = :id");
+		$sth = $db->prepare("SELECT count(*) FROM score WHERE score < (SELECT score FROM score WHERE id = :id)");
 		$sth->bindParam(':id', $id, PDO::PARAM_STR);
 		$sth->execute();
 		$results = $sth->fetchAll(PDO::FETCH_ASSOC);
-		print_r $results;
+		echo $results;
 	    $db = null;
 	} catch (PDOException $e) {
 	    print "Error!: " . $e->getMessage() . "<br/>";
