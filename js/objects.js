@@ -171,6 +171,7 @@ function Paddle(ctx, x, y) {
         fourthSide = fourthSide.toUnitVector().multiply(this.width);
         fourthCorner = drawLineFromVector(thirdCorner, fourthSide);
         
+        this.ctx.fillStyle = "rgba(255,255,255,0.6)";
         this.ctx.stroke();
         this.ctx.fill();
 
