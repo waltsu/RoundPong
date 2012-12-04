@@ -138,7 +138,7 @@ $(function () {
         // When user submits scoreform
         $('#scoreform').submit(function(){
             var newnick = $('#nick').val();
-            var newtime = timer.getFormattedTime(timer.getFinalTime());
+            var newtime = timer.getFinalTime();
             var newscore = score.getValue();
             var dataString = 'nick=' + newnick + '&time=' + newtime + '&score=' + newscore;
             $.ajax({
