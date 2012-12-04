@@ -354,7 +354,7 @@ h1 {
     background-color: transparent;
 }
 
-.score-board table tr:nth-child(10) {
+.score-board table tr:nth-child(11) {
     border-bottom: 3px solid darkorange;
 }
 
