@@ -63,7 +63,7 @@ $(function () {
             score.setValue('0');
             // Start timer
             timer.start();
-            timeInterval = setInterval(function() {time.setValue(timer.getFormattedTime(timer.getCurrentTime()));}, 60);
+            timeInterval = setInterval(function() {time.setValue(timer.getFormattedTime(timer.getCurrentTime()));}, 10);
             // Start engine
             engine = new PongEngine(ufoImg);
             engine.startEngine();
