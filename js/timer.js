@@ -41,7 +41,7 @@
         pastTime = pastTime - seconds * 1000;
         var mSeconds = pastTime;
         
-        return fixZeros(2, minutes) + ":" + fixZeros(2, seconds) + ":" + fixZeros(2, mSeconds);
+        return fixZeros(2, minutes) + ":" + fixZeros(2, seconds) + ":" + fixZeros(1, mSeconds);
     }
 
 }
