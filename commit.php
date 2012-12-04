@@ -20,11 +20,16 @@ if('POST' == $_SERVER['REQUEST_METHOD']){
 		$sth->execute();
 
 		$id = $db->lastInsertId();
-		$stmnt = $db->prepare("SELECT count(*) FROM score WHERE score >= (SELECT score FROM score WHERE id = :id) AND time < (SELECT time FROM score WHERE id = :id);");
+		$stmnt = $db->prepare("SELECT * FROM score ORDER BY score DESC, time ASC");
 		$stmnt->bindParam(':id', $id, PDO::PARAM_STR);
 		$stmnt->execute();
-		$result = $stmnt->fetchColumn();
-		echo $result;
+		$i = 1;
+		while($row = $stmnt->fetch()) {
+			if($row[id] != $id){
+				$i++;
+			}
+		}
+		echo $i;
 	    $db = null;
 
 	} catch (PDOException $e) {
