@@ -148,7 +148,7 @@ $(function () {
                 success: function(data) {
                     console.log(data);
                     if(newnick == "") { newnick = "anonymous"; }
-                    loadHighscore(newnick, newtime, newscore);
+                    loadHighscore(data, newnick, newtime, newscore);
                     console.log(newnick + "," + newtime + "," + newscore);
                     $('#nameModal').fadeOut();
                     $('html, body').animate({
@@ -186,7 +186,7 @@ $(function () {
         // refresh-images rotation value
         var rotationValue = 0;
         $(".refresh-image").click(function(){
-            loadHighscore(null, null, null);
+            loadHighscore(null, null, null, null);
             rotationValue += 720;
             $(this).rotate({
                 animateTo: rotationValue,

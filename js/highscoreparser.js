@@ -1,5 +1,5 @@
 // add highscore entries to table
-function loadHighscore(xnick, xtime, xscore) {
+function loadHighscore(position, xnick, xtime, xscore) {
 	// is your score at top10?
 	var added = 0;
 	$.getJSON("commit.php",function(result){
@@ -17,11 +17,11 @@ function loadHighscore(xnick, xtime, xscore) {
 		});
 		if(added == 0 && xtime != null && xscore != null) {
 			// if your score is not found from top10 it will be added at the bottom of the list
-			$('.score-board table').append('<tr class="hilight"><td>x.</td><td>' + xnick + '</td><td>' + xtime + '</td><td>' + xscore + '</td></tr>');
+			$('.score-board table').append('<tr class="hilight"><td>' + position + '</td><td>' + xnick + '</td><td>' + xtime + '</td><td>' + xscore + '</td></tr>');
 		}
 	});
 }
 
 //setInterval(loadHighscore, 30000);
 
-loadHighscore(null, null, null);
+loadHighscore(null, null, null, null);
