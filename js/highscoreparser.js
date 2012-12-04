@@ -18,7 +18,7 @@ function loadHighscore(position, xnick, xtime, xscore) {
 		});
 		if(added == 0 && xtime != null && xscore != null) {
 			// if your score is not found from top10 it will be added at the bottom of the list
-			$('.score-board table').append('<tr class="hilight"><td>' + position + '.</td><td>' + xnick + '</td><td>' + timer.getFormattedTime(xtime) + '</td><td>' + xscore + '</td></tr>');
+			$('.score-board table').append('<tr></tr><tr class="hilight"><td>' + position + '.</td><td>' + xnick + '</td><td>' + timer.getFormattedTime(xtime) + '</td><td>' + xscore + '</td></tr>');
 		}
 	});
 }
