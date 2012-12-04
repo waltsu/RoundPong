@@ -39,9 +39,9 @@
         pastTime = pastTime - minutes * 60000;
         var seconds = Math.floor(pastTime / 1000);
         pastTime = pastTime - seconds * 1000;
-        var mSeconds = pastTime;
+        var mSeconds = pastTime.substr(0,2);
         
-        return fixZeros(2, minutes) + ":" + fixZeros(2, seconds) + ":" + fixZeros(3, mSeconds);
+        return fixZeros(2, minutes) + ":" + fixZeros(2, seconds) + ":" + fixZeros(2, mSeconds);
     }
 
 }
