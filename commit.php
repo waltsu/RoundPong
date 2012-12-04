@@ -20,7 +20,7 @@ if('POST' == $_SERVER['REQUEST_METHOD']){
 		$sth->execute();
 
 		$id = $db->lastInsertId();
-		$stmnt = $db->prepare("SELECT count(*) FROM score WHERE score > (SELECT score FROM score WHERE id = :id) AND time < (SELECT time FROM score WHERE id = :id);");
+		$stmnt = $db->prepare("SELECT count(*) FROM score WHERE score > (SELECT score FROM score WHERE id = :id AND time < (SELECT time FROM score WHERE id = :id));");
 		$stmnt->bindParam(':id', $id, PDO::PARAM_STR);
 		$stmnt->execute();
 		$result = $stmnt->fetchColumn();
