@@ -18,11 +18,12 @@ if('POST' == $_SERVER['REQUEST_METHOD']){
 		$sth->bindParam(':score', $score, PDO::PARAM_STR);
 		$sth->bindParam(':time', $time, PDO::PARAM_STR);
 		$sth->execute();
+
 		$id = $db->lastInsertId();
-		$sth = $db->prepare("SELECT count(*) FROM score WHERE score > (SELECT score FROM score WHERE id = :id) AND time < (SELECT time FROM score WHERE id = :id);");
-		$sth->bindParam(':id', $id, PDO::PARAM_STR);
-		$sth->execute();
-		$result = $sth->fetchColumn(PDO::FETCH_ASSOC);
+		$stmnt = $db->prepare("SELECT count(*) FROM score WHERE score > (SELECT score FROM score WHERE id = :id) AND time < (SELECT time FROM score WHERE id = :id);");
+		$stmnt->bindParam(':id', $id, PDO::PARAM_STR);
+		$stmnt->execute();
+		$result = $stmnt->fetchColumn();
 		echo $result;
 	    $db = null;
 	} catch (PDOException $e) {
