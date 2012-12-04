@@ -22,7 +22,7 @@ if('POST' == $_SERVER['REQUEST_METHOD']){
 		$sth = $db->prepare("SELECT count(*) FROM score WHERE score > (SELECT score FROM score WHERE id = :id) AND time < (SELECT time FROM score WHERE id = :id);");
 		$sth->bindParam(':id', $id, PDO::PARAM_STR);
 		$sth->execute();
-		$result = $sth->fetch(PDO::FETCH_ASSOC);
+		$result = $sth->fetchAll(PDO::FETCH_ASSOC);
 		print_r $result;
 	    $db = null;
 	} catch (PDOException $e) {
