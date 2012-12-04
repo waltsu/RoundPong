@@ -354,13 +354,16 @@ h1 {
     background-color: transparent;
 }
 
+.score-board table tr:last-child {
+    border-bottom: 3px solid darkorange;
+}
+
 .hilight {
-    margin-top: 5px;
     background-color: darkorange;
 }
 
 .hilight-last td {
-    margin-top: 15px;
+    background-color: red;
 }
 
 footer {
