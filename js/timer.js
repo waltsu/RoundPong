@@ -42,7 +42,7 @@
         var mSeconds = pastTime + '';
         mSeconds = mSeconds.substr(0,2);
         
-        return fixZeros(2, minutes) + ":" + fixZeros(2, seconds) + ":" + fixZeros(3, mSeconds);
+        return fixZeros(2, minutes) + ":" + fixZeros(2, seconds) + ":" + fixZeros(2, mSeconds);
     }
 
 }
