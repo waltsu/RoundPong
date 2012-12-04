@@ -24,13 +24,20 @@
         return (new Date().getTime() - start);
     }
 
-    var  fixZeros = function (neededLength, number) {
-        var neededPadding = neededLength - String(number).length;
-        var number = String(number);
-        for (var i = 0; i < neededPadding; i++) {
-            number = "0" + String(number);
-        };
-        return number;
+    var fixZerosAndPadding = function (neededLength, number) {
+        var numLength = String(number).length;
+        if (numLength > neededLength) {
+            return String(number).substring(0, neededLength);
+        } else if (numLength < neededLength) {
+            var neededPadding = neededLength - numLength;
+            var number = String(number);
+            for (var i = 0; i < neededPadding; i++) {
+                number = "0" + String(number);
+            };
+            return number;
+        } else {
+            return number;
+        }
     }
 
     this.getFormattedTime = function (milliseconds) {
@@ -41,7 +48,7 @@
         pastTime = pastTime - seconds * 1000;
         var mSeconds = pastTime;
         
-        return fixZeros(2, minutes) + ":" + fixZeros(2, seconds) + ":" + fixZeros(3, mSeconds);
+        return fixZerosAndPadding(2, minutes) + ":" + fixZerosAndPadding(2, seconds) + ":" + fixZerosAndPadding(2, mSeconds);
     }
 
 }
