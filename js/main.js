@@ -132,6 +132,7 @@ $(function () {
 
             // Display the nameModal
             $('#nameModal').fadeIn();
+            $("input:text:visible:first").focus();
             
         });
 
