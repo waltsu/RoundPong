@@ -27,6 +27,8 @@ if('POST' == $_SERVER['REQUEST_METHOD']){
 		while($row = $stmnt->fetch()) {
 			if($row[id] != $id){
 				$i++;
+			} else {
+				break;
 			}
 		}
 		echo $i;
