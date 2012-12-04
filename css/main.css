@@ -304,7 +304,7 @@ h1 {
 .score-board {
     color: white;
     display: block;
-    height: 300px;
+    height: 340px;
     width: 100%;
     margin: 20px 0 0 0;
     position: relative;
@@ -332,18 +332,20 @@ h1 {
     width: 50%;
     text-align: center;
     float: right;
+    margin-top: 20px;
 }
 
 .refresh-image {
-    width: 25px;
-    padding: 5px;
+    width: 23px;
+    padding: 8px;
     position: absolute;
-    top: 0;
+    top: 23px;
     left: 400px;
 }
 
 .score-board table tr:nth-child(1) {
     border-bottom: 3px solid darkorange;
+    font-size: 20px;
 }
 
 .score-board table tr:hover {
