@@ -118,6 +118,8 @@ $(function () {
             console.log("there was a collision!");
             soundArray[1].play();
             score.setValue(Number(score.getValue()) + 150);
+
+            engine.increaseBallSpeed();    
         });
         $('#main-canvas').bind('gameOver', function() {
             soundArray[2].play();

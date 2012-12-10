@@ -45,6 +45,10 @@ function PongEngine(ballImg) {
         this.renderGame();
     }
 
+    PongEngine.prototype.increaseBallSpeed = function() {
+        this.ball.movingVector = this.ball.movingVector.multiply(1.1);
+    }
+
     PongEngine.prototype.movePaddle = function() {
         var movingFunction = null;
         if (this.movingCount > 0) {
