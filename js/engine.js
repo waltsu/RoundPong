@@ -67,8 +67,8 @@ function PongEngine(ballImg) {
             directionAngle = paddleDirectionVector.angleFrom(ballToPaddleVector);
 
             var isBallBetweenPaddle = directionAngle >= 0 && directionAngle <= Math.PI;
-            // We are taking account that picture is 50*50px. And getBallDistanceFromCenter returns distance between ball's center point and center
-            var ballDistance = this.ball.getBallDistanceFromCenter() + this.ball.img.width;
+
+            var ballDistance = this.ball.getBallDistanceFromCenter() + this.ball.img.width / 2;
             var isBallInSameLineWithPaddle = ballDistance >= this.area.getRadius(); 
             if (isBallBetweenPaddle && isBallInSameLineWithPaddle) {
                 return true;
