@@ -68,25 +68,22 @@ $(function () {
             engine = new PongEngine(ufoImg);
             engine.startEngine();
         }
+        
+        var movingCount = 0;
 
         var upPressed = function() {
             console.log("up");
-            engine.ball.movingVector.elements[1]--;
+            //engine.ball.movingVector.elements[1]--;
         },
             downPressed = function() {
                 console.log("down");
-                engine.ball.movingVector.elements[1]++;
+                //engine.ball.movingVector.elements[1]++;
             },
             rightPressed = function() {
-                // for now, move paddle 10 times right
-                for(var i =  0; i < 10; i++) {
-                    engine.paddle.movePaddleRight();
-                }
+                engine.movingCount++;
             },
             leftPressed = function() {
-                for(var i = 0; i < 10; i++) {
-                    engine.paddle.movePaddleLeft();
-                }
+                engine.movingCount--;
             };
 
         var keyHandlers = {39: rightPressed, 38: upPressed, 37: leftPressed, 40: downPressed};

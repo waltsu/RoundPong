@@ -8,6 +8,7 @@ function PongEngine(ballImg) {
     this.paddle = new Paddle(this.ctx, paddleStartPosition['x'], ballStartPosition['y']);
     this.area = new Area(this.ctx);
     this.runLoopId = 0;
+    this.movingCount = 0;
 
     PongEngine.prototype.startEngine = function() {
         // Initialize
@@ -40,7 +41,21 @@ function PongEngine(ballImg) {
 
     PongEngine.prototype.runLoop = function() {
         this.calculateGame();
+        this.movePaddle();
         this.renderGame();
+    }
+
+    PongEngine.prototype.movePaddle = function() {
+        var movingFunction = null;
+        if (this.movingCount > 0) {
+            for (i = 0; i < this.movingCount; i++) {
+              this.paddle.movePaddleRight();
+            }
+        } else if (this.movingCount < 0) {
+            for (i = 0; i > this.movingCount; i--) {
+              this.paddle.movePaddleLeft();
+            }
+        }
     }
 
     PongEngine.prototype.calculateGame = function() {
