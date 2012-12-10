@@ -50,7 +50,6 @@ function PongEngine(ballImg) {
     }
 
     PongEngine.prototype.movePaddle = function() {
-        var movingFunction = null;
         if (this.movingCount > 0) {
             for (i = 0; i < this.movingCount; i++) {
               this.paddle.movePaddleRight();
