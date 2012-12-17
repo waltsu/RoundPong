@@ -33,7 +33,7 @@ function Ball(ctx, x, y, img) {
     }
 
     Ball.prototype.render = function() {
-        this.drawDebug();
+        //this.drawDebug();
         this.ctx.drawImage(this.img, this.x - this.img.width/2, this.y - this.img.height/2);
     }
 
