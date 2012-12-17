@@ -73,11 +73,9 @@ $(function () {
 
         var upPressed = function() {
             console.log("up");
-            //engine.ball.movingVector.elements[1]--;
         },
             downPressed = function() {
                 console.log("down");
-                //engine.ball.movingVector.elements[1]++;
             },
             rightPressed = function() {
                 engine.movingCount++;
