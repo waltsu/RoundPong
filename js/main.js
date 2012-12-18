@@ -18,9 +18,27 @@ $(function () {
 
         // Init sounds
         soundArray = new Array();
-        soundArray[0] = new Soundgun("sounds/theme.ogg");
-        soundArray[1] = new Soundgun("sounds/hit.ogg");
-        soundArray[2] = new Soundgun("sounds/gameover.ogg");
+        var tester = new Soundgun();
+        tester = tester.supportedFormats();
+
+        // Test what sounds to load based on browser support
+        if (tester[1][1] == true) {
+            soundArray[0] = new Soundgun("sounds/theme.ogg");
+            soundArray[1] = new Soundgun("sounds/hit.ogg");
+            soundArray[2] = new Soundgun("sounds/gameover.ogg");
+            console.log("Chose ogg vorbis");
+        } else if (tester[0][1] == true) {
+            soundArray[0] = new Soundgun("sounds/theme.mp3");
+            soundArray[1] = new Soundgun("sounds/hit.mp3");
+            soundArray[2] = new Soundgun("sounds/gameover.mp3");
+            console.log("Chose mp3");
+        } else {
+            soundArray[0] = new Soundgun("sounds/theme.wav");
+            soundArray[1] = new Soundgun("sounds/hit.wav");
+            soundArray[2] = new Soundgun("sounds/gameover.wav");
+            console.log("Chose wav");
+        }
+        
         var muteButton = $('#mute-button');
 
         // Set loop for theme
@@ -135,30 +153,32 @@ $(function () {
 
         // When user submits scoreform
         $('#scoreform').submit(function(){
-            var newnick = $('#nick').val();
-            var newtime = timer.getFinalTime();
-            var newscore = score.getValue();
-            var dataString = 'nick=' + newnick + '&time=' + newtime + '&score=' + newscore;
-            $.ajax({
-                type: 'POST',
-                url: 'commit.php',
-                data: dataString,
-                success: function(data) {
-                    console.log(data);
-                    if(newnick == "") { newnick = "anonymous"; }
-                    loadHighscore(data, newnick, newtime, newscore);
-                    console.log(newnick + "," + newtime + "," + newscore);
-                    $('#nameModal').fadeOut();
-                    $('html, body').animate({
-                        scrollTop: $("#score-board").offset().top
-                    }, 1500);
-                    $('#start-game-modal').fadeIn();
-                },
-                error: function(data) {
-                    $('error-modal').fadeIn();
-                }
-            });
-            return false;
+            if (engine.isEngineRunning() == false) {
+                var newnick = $('#nick').val();
+                var newtime = timer.getFinalTime();
+                var newscore = score.getValue();
+                var dataString = 'nick=' + newnick + '&time=' + newtime + '&score=' + newscore;
+                $.ajax({
+                    type: 'POST',
+                    url: 'commit.php',
+                    data: dataString,
+                    success: function(data) {
+                        console.log(data);
+                        if(newnick == "") { newnick = "anonymous"; }
+                        loadHighscore(data, newnick, newtime, newscore);
+                        console.log(newnick + "," + newtime + "," + newscore);
+                        $('#nameModal').fadeOut();
+                        $('html, body').animate({
+                            scrollTop: $("#score-board").offset().top
+                        }, 1500);
+                        $('#start-game-modal').fadeIn();
+                    },
+                    error: function(data) {
+                        $('error-modal').fadeIn();
+                    }
+                });
+                return false;
+            };
         });
 
         // When user restarts game

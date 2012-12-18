@@ -301,6 +301,11 @@ h1 {
     padding: 10px;
 }
 
+.how-to-play img {
+    vertical-align: baseline;
+    margin-left: -8px;
+}
+
 .score-board {
     color: white;
     display: block;

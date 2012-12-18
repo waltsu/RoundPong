@@ -9,6 +9,7 @@ function PongEngine(ballImg) {
     this.area = new Area(this.ctx);
     this.runLoopId = 0;
     this.movingCount = 0;
+    this.engineRunning = null;
 
     PongEngine.prototype.startEngine = function() {
         // Initialize
@@ -16,10 +17,12 @@ function PongEngine(ballImg) {
 
         var runLoop = _.bind(this.runLoop, this);
         this.runLoopId = setInterval(runLoop, 33);
+        this.engineRunning = true;
     }
 
     PongEngine.prototype.stopEngine = function() {
         clearInterval(this.runLoopId);
+        this.engineRunning = false;
     }
 
     PongEngine.prototype.restartEngine = function() {
@@ -98,7 +101,7 @@ function PongEngine(ballImg) {
     PongEngine.prototype.isGameOver = function() {
         var ballDistance = this.ball.getBallDistanceFromCenter();
         // TODO: Fix this!
-        return ballDistance > this.area.getRadius() - 10;
+        return ballDistance > this.area.getRadius() - 17;
     }
 
     PongEngine.prototype.getMovingVectorAfterCollide = function() {
@@ -109,5 +112,9 @@ function PongEngine(ballImg) {
 
         return rotateVector(crossCollisionAngle * 2, movingVector);
         
+    }
+
+    PongEngine.prototype.isEngineRunning = function() {
+        return this.engineRunning;
     }
 }
