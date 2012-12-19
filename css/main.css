@@ -316,11 +316,16 @@ h1 {
 }
 
 .how-to-play,
-.score-board {
+.score-board,
+.contact-us {
     background-color: #333;
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 3px;
     padding: 10px;
+}
+
+.contact-us {
+    margin: 20px 0 0 0;
 }
 
 .score-explanation {
