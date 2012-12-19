@@ -1,8 +1,8 @@
 <?php
 
 // credentials for database
-$user = 'gamedev';
-$pass = 'ThisShouldBeOver9000';
+$user = '****';
+$pass = '****';
 
 if('POST' == $_SERVER['REQUEST_METHOD']){
 	$nick = strip_tags(wordwrap($_POST['nick'], 15));
