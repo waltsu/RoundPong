@@ -26,17 +26,17 @@ $(function () {
             soundArray[0] = new Soundgun("sounds/theme.ogg");
             soundArray[1] = new Soundgun("sounds/hit.ogg");
             soundArray[2] = new Soundgun("sounds/gameover.ogg");
-            console.log("Chose ogg vorbis");
+            //console.log("Chose ogg vorbis");
         } else if (tester[0][1] == true) {
             soundArray[0] = new Soundgun("sounds/theme.mp3");
             soundArray[1] = new Soundgun("sounds/hit.mp3");
             soundArray[2] = new Soundgun("sounds/gameover.mp3");
-            console.log("Chose mp3");
+            //console.log("Chose mp3");
         } else {
             soundArray[0] = new Soundgun("sounds/theme.wav");
             soundArray[1] = new Soundgun("sounds/hit.wav");
             soundArray[2] = new Soundgun("sounds/gameover.wav");
-            console.log("Chose wav");
+            //console.log("Chose wav");
         }
         
         var muteButton = $('#mute-button');
@@ -90,10 +90,10 @@ $(function () {
         var movingCount = 0;
 
         var upPressed = function() {
-            console.log("up");
+            //console.log("up");
         },
             downPressed = function() {
-                console.log("down");
+                //console.log("down");
             },
             rightPressed = function() {
                 engine.movingCount++;
@@ -131,7 +131,7 @@ $(function () {
 
         // Bind all game events. Game engine triggers them to canvas
         $('#main-canvas').bind('collision', function() {
-            console.log("there was a collision!");
+            //console.log("there was a collision!");
             soundArray[1].play();
             score.setValue(Number(score.getValue()) + 150);
 
@@ -163,10 +163,10 @@ $(function () {
                     url: 'commit.php',
                     data: dataString,
                     success: function(data) {
-                        console.log(data);
+                        //console.log(data);
                         if(newnick == "") { newnick = "anonymous"; }
                         loadHighscore(data, newnick, newtime, newscore);
-                        console.log(newnick + "," + newtime + "," + newscore);
+                        //console.log(newnick + "," + newtime + "," + newscore);
                         $('#nameModal').fadeOut();
                         $('html, body').animate({
                             scrollTop: $("#score-board").offset().top
