@@ -5,7 +5,7 @@ $user = 'gamedev';
 $pass = 'ThisShouldBeOver9000';
 
 if('POST' == $_SERVER['REQUEST_METHOD']){
-	$nick = wordwrap($_POST['nick'], 15);
+	$nick = strip_tags(wordwrap($_POST['nick'], 15));
 	$score = $_POST['score'];
 	$time = $_POST['time'];
 
