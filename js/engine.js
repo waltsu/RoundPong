@@ -101,7 +101,7 @@ function PongEngine(ballImg) {
     PongEngine.prototype.isGameOver = function() {
         var ballDistance = this.ball.getBallDistanceFromCenter();
         // TODO: Fix this!
-        return ballDistance > this.area.getRadius() - 17;
+        return ballDistance > this.area.getRadius() - 10; // raja-arvo 17
     }
 
     PongEngine.prototype.getMovingVectorAfterCollide = function() {
