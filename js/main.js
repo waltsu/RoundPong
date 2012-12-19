@@ -193,10 +193,10 @@ $(function () {
         });
 
         $('#mute-button').click(function(){
-            if (muteButton.css('background-image').indexOf('mute-off.png') != -1) {
-                muteButton.css('background-image', 'url(img/mute-on.png)');
+            if (muteButton.css('backgroundImage').indexOf('mute-off.png') != -1) {
+                muteButton.css('backgroundImage', 'url(img/mute-on.png)');
             } else {
-                muteButton.css('background-image', 'url(img/mute-off.png)');
+                muteButton.css('backgroundImage', 'url(img/mute-off.png)');
             }
             toggleMute(soundArray);
         });
