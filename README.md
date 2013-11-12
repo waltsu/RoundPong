@@ -9,3 +9,6 @@ Round pong uses HTML5 canvas-element and Javascript. The game logic has been cod
 ### Idea ###
 Main idea is to move the paddle and keep the ball inside the circle.
 
+### Play! ###
+You can try Round pong [here](http://playground.jsalovaara.com/spaceball/)!
+
